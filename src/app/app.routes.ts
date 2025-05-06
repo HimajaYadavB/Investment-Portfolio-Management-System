@@ -21,7 +21,7 @@ import { TradeComponent } from './pages/trade/trade.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'user-login', pathMatch: 'full' }, // Default Route
-  { path: 'user-login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'broker-dashboard', component: BrokerComponent },
   { path: 'user-register', component: RegisterComponent },
   { path: 'user-dashboard', component: DashboardComponent },

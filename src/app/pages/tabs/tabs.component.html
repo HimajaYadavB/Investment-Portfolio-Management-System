@@ -11,6 +11,8 @@
 
       <li [class.active]="activeTab === 'user-taxes'" (click)="switchTab('user-taxes')">Taxes</li> -->
       <li [class.active]="activeTab === 'user-payments'" (click)="switchTab('user-payments')">Payments</li>
+      <li class="profile-tab"><app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
+      </li>
     </ul>
   </header>
 

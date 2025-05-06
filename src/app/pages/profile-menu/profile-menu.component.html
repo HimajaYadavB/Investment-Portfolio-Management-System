@@ -1,0 +1,9 @@
+<div class="profile-wrapper" (click)="toggleDropdown()" tabindex="0" (blur)="closeDropdown()">
+    <div class="profile-icon">👤</div>
+    <div class="dropdown-menu" *ngIf="showDropdown">
+      <p><strong>{{ userName }}</strong></p>
+      <p>{{ userEmail }}</p>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+  

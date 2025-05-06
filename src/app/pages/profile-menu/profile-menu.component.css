@@ -1,0 +1,62 @@
+/* Ensure proper alignment of profile icon tab */
+.tabs li.profile-tab {
+    margin-left: auto; /* Push profile tab to the far right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remove extra padding */
+    cursor: pointer;
+  }
+  
+  /* Profile icon styling */
+  .profile-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6badda; /* Green background */
+    color: white;
+    font-size: 18px; /* Adjust icon size */
+    cursor: pointer;
+  }
+  
+  /* Dropdown menu styling */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 45px; /* Position it below the profile icon */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 150px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .profile-wrapper:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover */
+  }
+  
+  .dropdown-menu p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .dropdown-menu button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu button:hover {
+    background-color: #d32f2f;
+  }
+  

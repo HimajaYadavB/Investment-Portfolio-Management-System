@@ -56,3 +56,111 @@
   color: #fff;
   border-color: #007bff;
 }
+
+.tabs {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tabs li {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover Effect */
+.tabs li:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.03);
+}
+
+/* Active Tab Style */
+.tabs li.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/* Profile tab pushed to the right */
+.tabs li.profile-tab {
+  margin-left: auto;
+  padding: 0; /* Let the app-profile-menu handle its own padding */
+  border: none;
+  background: none;
+  cursor: default;
+}
+.tabs {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  align-items: center; /* Ensure vertical centering */
+}
+
+.tabs li {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+/* Profile menu tab styling */
+.tabs li.profile-tab {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: default;
+}
+/* Profile tab styling */
+.tabs li.profile-tab {
+  padding: 0;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Force size and alignment */
+.profile-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Optional: remove outer spacing from the component itself */
+app-profile-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

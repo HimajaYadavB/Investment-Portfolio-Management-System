@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { UserdashboardService } from '../../services/userdashboard.service';
+import { AdminService } from '../../services/admin.service';
+import { BrokersService } from '../../services/brokers.service';
 
 @Component({
   selector: 'app-login',
@@ -13,31 +15,46 @@ import { UserdashboardService } from '../../services/userdashboard.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  name: string = '';
+  selectedRole: string = '';
   email: string = '';
   password: string = '';
-  constructor(private auth:AuthService, private router:Router, private dash: UserdashboardService){
 
-  }
+  constructor(
+    private router: Router,
+    private adminService: AdminService,
+    private brokerService: BrokersService,
+    private userService: AuthService,
+    private dash: UserdashboardService
+  ) {}
 
   login() {
+    const credentials = { email: this.email, password: this.password };
 
-    this.dash.setEmailService(this.email)
-    //console.log('Username:', this.email);
-    //console.log('Password:', this.password);
-    const obj = { email:this.email, password: this.password };
+    switch (this.selectedRole) {
+      case 'admin':
+        this.adminService.adminloginservice(credentials).subscribe({
+          next: () => this.router.navigate(['/admin-dashboard']),
+          error: (err) => console.error('Admin login error:', err)
+        });
+        break;
 
-    this.auth.loginservice(obj).subscribe({
-      next: (response) => {
-        //alert('Login successful!');
-        //console.log('Response:', response);
-        this.router.navigate(['/user-dashboard']);
-      },
-      error: (error) => {
-        //alert('Login failed! Please check your credentials.');
-        console.error('Error:', error);
-      }
-    });
+      case 'broker':
+        this.brokerService.brokerLoginService(credentials).subscribe({
+          next: () => this.router.navigate(['/broker-dashboard']),
+          error: (err) => alert('Broker login failed!')
+        });
+        break;
 
+      case 'user':
+        this.dash.setEmailService(this.email);
+        this.userService.loginservice(credentials).subscribe({
+          next: () => this.router.navigate(['/user-dashboard']),
+          error: (err) => console.error('User login error:', err)
+        });
+        break;
+
+      default:
+        alert('Please select a role!');
+    }
   }
 }

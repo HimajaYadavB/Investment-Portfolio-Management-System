@@ -1,12 +1,33 @@
 <div class="container">
-    <h2 class="heading">User Login</h2><br><br>
+    <h2 class="heading">Login</h2><br><br>
+  
+    <label for="role">Select Role:</label>
+    <select [(ngModel)]="selectedRole" id="role">
+      <option value="" disabled selected>Select your role</option>
+      <option value="user">User</option>
+      <option value="broker">Broker</option>
+      <option value="admin">Admin</option>
+    </select>
+  
+    <br><br>
     Email:  
     <input type="email" placeholder="Email" [(ngModel)]="email" />
-    <br><br>Password:  <input type="password" placeholder="Password" [(ngModel)]="password" />
-    <br><br><button (click)="login()">Login</button><br><br>
-    <p>
-        Don't have an account?<br>
-    <a href="/user-register">Register Here</a>
+  
+    <br><br>
+    Password:  
+    <input type="password" placeholder="Password" [(ngModel)]="password" />
+  
+    <br><br>
+    <button (click)="login()">Login</button>
+  
+    <br><br>
+    <p *ngIf="selectedRole === 'user'">
+      Don't have an account?<br>
+      <a href="/user-register">Register Here</a>
+    </p>
+    <p *ngIf="selectedRole === 'broker'">
+      Don't have an account?<br>
+      <a href="/broker-register">Register Here</a>
     </p>
   </div>
   
