@@ -1,0 +1,19 @@
+<div class="tabs-container">
+  <!-- Main Tabs Header -->
+  <header class="main-tabs-header">
+    <h2 class="headingg">Investment Portfolio Management</h2>
+    <ul class="tabs">
+      <li [class.active]="activeTab === 'user-dashboard'" (click)="switchTab('user-dashboard')">Home</li>
+      <!-- <li [class.active]="activeTab === 'user-portfolio'" (click)="switchTab('user-portfolio')">Portfolios</li>
+      <li [class.active]="activeTab === 'user-asset'" (click)="switchTab('user-asset')">Assets</li> -->
+      <li [class.active]="activeTab === 'user-trade'" (click)="switchTab('user-trade')">Trades</li> 
+      <!-- <li [class.active]="activeTab === 'user-dividend'" (click)="switchTab('user-dividend')">Dividends</li>
+
+      <li [class.active]="activeTab === 'user-taxes'" (click)="switchTab('user-taxes')">Taxes</li> -->
+      <li [class.active]="activeTab === 'user-payments'" (click)="switchTab('user-payments')">Payments</li>
+    </ul>
+  </header>
+
+
+
+</div>

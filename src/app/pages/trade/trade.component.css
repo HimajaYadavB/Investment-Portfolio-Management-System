@@ -1,0 +1,78 @@
+/* Container to hold title and tabs on one line */
+.trade-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f8ff;
+    padding: 15px 25px;
+    border-bottom: 1px solid #ddd;
+    margin: 30px auto;
+    max-width: 1250px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  border-bottom: 1px solid #ddd; /* Optional: Add a bottom border for separation */
+  }
+  
+  /* Heading style */
+  /* .payments-header h3 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+    color: #002147; 
+    border-bottom: 2px solid #002147;
+    padding-bottom: 5px;
+    font-family: 'Arial', sans-serif;
+  } */
+  .tabs-container {
+    margin-top: -40px; /* Move the whole container up */
+  }
+  
+  /* Tabs container */
+  .tabs {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    top: 200px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Tab items */
+  .tabs li {
+    padding: 8px 16px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  /* Hover effect for tab */
+  .tabs li:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.03);
+  }
+  
+  /* Active tab style */
+  .tabs li.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+  
+  /* Tab anchor styling */
+  .tabs a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Active tab anchor underline and bold */
+  .tabs .active a {
+    font-weight: bold;
+    color: #fff;
+  }
+  

@@ -1,0 +1,132 @@
+/* Global h3 styling */
+/* Global wrapper to center content and apply margins */
+.page-container {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  
+  /* Optional background for contrast */
+  body {
+    background-color: #f7f9fc;
+  }
+  
+
+  h3 {
+    font-size: 25px;
+    color: #055fc0; /* Dark navy blue, richer than #007bff */
+    font-weight: bold;
+    border-bottom: 2px solid #004085; /* Matches the heading color */
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  
+  
+  
+  /* Global table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif; /* Added font-family */
+  }
+  
+  /* Global th and td styling */
+  th, td {
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    font-family: 'Arial', sans-serif; /* Ensure font consistency */
+  }
+  
+  /* Global th background and font color */
+  th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  /* Global table row hover effect */
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Global td font size and color */
+  td {
+    font-size: 14px;
+    color: #555;
+  }
+  .primary-action-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 25px;
+  }
+  
+  .primary-action-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .primary-action-btn:active {
+    transform: scale(0.98);
+  }
+
+  
+  button {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  .text-center{
+    text-align: center;
+  }
+
+

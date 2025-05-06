@@ -1,0 +1,27 @@
+<div class="page-container"><div class="dividend-container">
+  <!-- Check if taxes exist -->
+  <div *ngIf="taxes.length > 0; else notaxes">
+    <h3>My Taxes</h3>
+    <table class="pdividend-table">
+      <thead>
+        <tr>
+          <th>Tax Type</th>
+          <th>Total Amount</th>
+          <th>Latest Payment Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tax of taxes">
+          <td>{{ tax.TaxType }}</td>
+          <td class="text-right">{{ tax.TotalAmount | currency:'USD' }}</td>
+          <td class="text-center">{{ tax.LatestPaymentDate | date:'yyyy-MM-dd' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Message to show if no taxes exist -->
+  <ng-template #notaxes>
+    <p>No tax records available to display.</p>
+  </ng-template>
+</div></div>

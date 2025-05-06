@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="portfolio-container">
+
+    <h3 class="portfolio-heading">Pending Approvals</h3>
+
+    <!-- Check if portfolios exist -->
+    <div *ngIf="brokers.length > 0; else nopending">
+      <table class="portfolio-table">
+        <thead>
+          <tr>
+            <th>Broker Name</th>
+            <th>Email</th>
+            <th>License Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let broker of brokers">
+            <td>{{ broker.BrokerName }}</td>
+          <td>{{ broker.Email }}</td>
+          <td>{{ broker.LicenseNumber }}</td>
+          <td>
+            <button (click)="approve(broker.BrokerID)">Approve</button>
+            <button (click)="reject(broker.BrokerID)">Reject</button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Message to show if no portfolios exist -->
+    <ng-template #nopending>
+      <p>No pending approvals</p>
+    </ng-template>
+  </div>
+
+</body>
+</html>
+

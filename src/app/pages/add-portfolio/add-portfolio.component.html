@@ -1,0 +1,37 @@
+<div class="portfolio-container">
+    <h2>Add Portfolio</h2>
+  
+    <form (ngSubmit)="addPortfolio()">
+      <!-- Portfolio Name -->
+      <div class="form-group">
+        <label for="portfolioName">Portfolio Name:</label>
+        <input 
+          type="text" 
+          id="portfolioName" 
+          [(ngModel)]="portfolioName" 
+          name="portfolioName" 
+          required
+        />
+      </div>
+  
+      <!-- Portfolio Type -->
+      <div>
+        <label for="portfolioType">Portfolio Type:</label>
+        <select id="portfolioType" [(ngModel)]="portfolioType" name="portfolioType" required>
+            <option value="" disabled selected>Select a Portfolio Type</option>
+            <option *ngFor="let portfolioType of portfolioTypes" [value]="portfolioType.PortfolioType">
+                {{ portfolioType.PortfolioType }}
+              </option>
+        </select>
+      </div>
+      <br />
+  
+
+      <div class="button-group">
+        <button type="submit">Add Portfolio</button>
+        <button type="button" class="cancel-btn" (click)="goBack()">Cancel</button>
+      </div>
+      
+    </form>
+  </div>
+  

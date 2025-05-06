@@ -1,0 +1,51 @@
+.pdividend-table{
+    width: 60%;
+    margin:0 auto;
+}
+
+.pdividend-table th:nth-child(1),
+.pdividend-table td:nth-child(1) {
+  width: 40%;
+}
+
+.pdividend-table th:nth-child(2),
+.pdividend-table td:nth-child(2) {
+  width: 30%;
+}
+
+.pdividend-table th:nth-child(3),
+.pdividend-table td:nth-child(3) {
+  width: 30%;
+}
+
+.passet-table {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  /* Column widths for asset table */
+  .passet-table th:nth-child(1),
+  .passet-table td:nth-child(1) {
+    width: 25%;
+  }
+  
+  .passet-table th:nth-child(2),
+  .passet-table td:nth-child(2) {
+    width: 15%;
+  }
+  
+  .passet-table th:nth-child(3),
+  .passet-table td:nth-child(3) {
+    width: 15%;
+  }
+  
+  .passet-table th:nth-child(4),
+  .passet-table td:nth-child(4) {
+    width: 15%;
+  }
+  
+  .passet-table th:nth-child(5),
+  .passet-table td:nth-child(5) {
+    width: 15%;
+  }
+  

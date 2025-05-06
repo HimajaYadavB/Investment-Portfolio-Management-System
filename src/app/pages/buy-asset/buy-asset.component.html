@@ -1,0 +1,96 @@
+<div class="container">
+    <h2>Buy Asset</h2>
+    
+    <form (ngSubmit)="buyAssets()">
+      <div>
+        <label for="portfolioName">Portfolio Name:</label>
+        <select id="portfolioName" [(ngModel)]="portfolioName" name="portfolioName" required>
+            <option value="" disabled selected>Select a Portfolio</option>
+            <option *ngFor="let portfolio of portfolios" [value]="portfolio.PortfolioName">
+              {{ portfolio.PortfolioName }}
+            </option>
+          </select>
+    
+      </div>
+      <br />
+      
+      <div>
+        <label for="assetName">Asset Name:</label>
+        <input
+          type="text"
+          id="assetName"
+          placeholder="Enter Asset Name"
+          [(ngModel)]="assetName"
+          name="assetName"
+          required
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="assetType">Asset Type:</label>
+        <select id="assetType" [(ngModel)]="assetType" name="assetType" required>
+            <option value="" disabled selected>Select an Asset Type</option>
+            <option *ngFor="let assetType of assetTypes" [value]="assetType.AssetType">
+                {{ assetType.AssetType }}
+              </option>
+        </select>
+      </div>
+      <br />
+  
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          id="quantity"
+          placeholder="Enter Quantity"
+          [(ngModel)]="quantity"
+          name="quantity"
+          required
+          min="1"
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="purchasePrice">Purchase Price:</label>
+        <input
+          type="number"
+          id="purchasePrice"
+          placeholder="Enter Purchase Price"
+          [(ngModel)]="purchasePrice"
+          name="purchasePrice"
+          required
+          step="0.01"
+          min="0.01"
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="brokerID">Broker ID:</label>
+        <!-- <input
+          type="number"
+          id="brokerID"
+          placeholder="Enter Broker ID"
+          [(ngModel)]="brokerID"
+          name="brokerID"
+          required
+        /> -->
+        <select id="brokerName" [(ngModel)]="brokerName" name="brokerName" required>
+          <option value="" disabled selected>Select Broker for the Transaction</option>
+          <option *ngFor="let broker of brokers" [value]="broker.BrokerName">
+              {{ broker.BrokerName }}
+            </option>
+      </select>
+      </div>
+      <br />
+  
+      <div class="button-group">
+        <button type="submit">Buy Asset</button>
+        <button type="button" class="cancel-btn" (click)="goBack()">Cancel</button>
+      </div>
+      
+    </form>
+
+  </div>

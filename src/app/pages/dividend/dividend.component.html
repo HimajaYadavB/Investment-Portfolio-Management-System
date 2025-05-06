@@ -1,0 +1,59 @@
+<div class="page-container">
+  <div class="dividend-container">
+    
+      <!-- Check if portfolios exist -->
+      <div *ngIf="pdiv.length > 0; else nodividend">
+        <h3>My Portfolio Dividends</h3>
+        <table class="pdividend-table">
+          <thead>
+            <tr>
+              <th>Portfolio Name</th>
+              <th>Portfolio Type</th>
+              <th>Total Dividend Amount</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let portfolio of pdiv">
+              <td>{{ portfolio.PortfolioName }}</td>
+              <td>{{ portfolio.PortfolioType }}</td>
+              <td class="text-right">{{ portfolio.TotalDividendAmount| currency:'USD'}}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+<br><br><br><br>
+
+      <div *ngIf="adiv.length > 0; else nodividend">
+        <h3>My Asset Dividends</h3>
+        <table class="passet-table">
+          <thead>
+            <tr>
+              <th>Asset Name</th>
+              <th>Asset Type</th>
+              <th>Asset Quantity</th>
+              <th>Current Price</th>
+              <th>Total Dividend Amount</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of adiv">
+              <td>{{ a.AssetName }}</td>
+              <td>{{ a.AssetType }}</td>
+              <td class="text-right">{{ a.Quantity }}</td>
+              <td class="text-right">{{ a.CurrentPrice | currency:'USD'}}</td>
+              <td class="text-right">{{ a.TotalDividendAmount | currency:'USD'}}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <!-- Message to show if no portfolios exist -->
+      <ng-template #nodividend>
+        <p>No portfolios available to display.</p>
+      </ng-template>
+    </div>
+  </div>

@@ -1,0 +1,89 @@
+<!-- Sell Asset Form -->
+<div class="container">
+    <h2>Sell Asset</h2>
+  
+    <form (ngSubmit)="sellAsset()">
+      <div>
+        <label for="portfolioName">Portfolio Name:</label>
+        <input
+          type="text"
+          id="portfolioName"
+          [(ngModel)]="portfolioName"
+          name="portfolioName"
+          disabled
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="assetName">Asset Name:</label>
+        <input
+          type="text"
+          id="assetName"
+          [(ngModel)]="assetName"
+          name="assetName"
+          disabled
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="assetType">Asset Type:</label>
+        <input
+          type="text"
+          id="assetType"
+          [(ngModel)]="assetType"
+          name="assetType"
+          disabled
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          id="quantity"
+          placeholder="Enter Quantity to Sell"
+          [(ngModel)]="quantity"
+          name="quantity"
+          required
+          min="1"
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="sellPrice">Selling Price:</label>
+        <input
+          type="number"
+          id="sellPrice"
+          placeholder="Enter Selling Price"
+          [(ngModel)]="sellPrice"
+          name="sellPrice"
+          required
+          step="0.01"
+          min="0.01"
+        />
+      </div>
+      <br />
+  
+      <div>
+        <label for="brokerName">Broker Name:</label>
+        <select
+          id="brokerName"
+          [(ngModel)]="brokerName"
+          name="brokerName"
+          required
+        >
+          <option value="" disabled selected>Select Broker for the Transaction</option>
+          <option *ngFor="let broker of brokers" [value]="broker.BrokerName">
+            {{ broker.BrokerName }}
+          </option>
+        </select>
+      </div>
+      <br />
+  
+      <button type="submit">Sell</button>
+    </form>
+  </div>

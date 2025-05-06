@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="heading">Broker Registration</h2><br><br>
+  
+    <label for="brokerName">Broker Name:</label>
+    <input type="text" id="brokerName" placeholder="Broker Name" [(ngModel)]="brokerName" /><br><br>
+  
+    <label for="contactDetails">Contact Details:</label>
+    <input type="text" id="contactDetails" placeholder="Contact Details" [(ngModel)]="contactDetails" /><br><br>
+  
+    <label for="commissionRate">Commission Rate (%):</label>
+    <input type="number" id="commissionRate" placeholder="Commission Rate" step="0.01" [(ngModel)]="commissionRate" /><br><br>
+  
+    <label for="licenseNumber">License Number:</label>
+    <input type="text" id="licenseNumber" placeholder="License Number" [(ngModel)]="licenseNumber" /><br><br>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Email" [(ngModel)]="email" /><br><br>
+  
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Password" [(ngModel)]="password" /><br><br>
+  
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword" (input)="checkPasswords()" /><br><br>
+  
+    <div *ngIf="passwordError" style="color: red;">Passwords do not match!</div><br>
+  
+    <button (click)="register()">Register</button><br><br>
+  
+    <p>
+      Already have an account?<br>
+      <a href="/broker-login">Login Here</a>
+    </p>
+  </div>
+  

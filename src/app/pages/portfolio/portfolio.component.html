@@ -1,0 +1,39 @@
+<div class="page-container"><div class="portfolio-container">
+  <!-- Header with button and title -->
+  <div class="portfolio-header">
+    <h3 class="portfolio-heading">My Portfolios</h3>
+    
+    <div class="table-header">
+      <div></div> <!-- placeholder to push the button to right -->
+      <button class="primary-action-btn" (click)="goToAdd()">Add Portfolio</button>
+    </div>
+  </div>
+
+  <!-- Check if portfolios exist -->
+  <div *ngIf="portfolios.length > 0; else noPortfolios">
+    <table class="portfolio-table">
+      <thead>
+        <tr>
+          <th>Portfolio Name</th>
+          <th>Portfolio Type</th>
+          <th>Date Created</th>
+          <th>Number of Assets</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let portfolio of portfolios">
+          <td>{{ portfolio.PortfolioName }}</td>
+          <td>{{ portfolio.PortfolioType }}</td>
+          <td class="text-center">{{ portfolio.DateCreated | date:'yyyy-MM-dd' }}</td>
+          <td>{{ portfolio.AssetCount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Message to show if no portfolios exist -->
+  <ng-template #noPortfolios>
+    <p style="margin-left: 30px;">No portfolios available to display.</p>
+  </ng-template>
+</div>
+</div>

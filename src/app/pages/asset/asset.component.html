@@ -1,0 +1,45 @@
+<div class="page-container">
+  <div class="assets-section">
+  
+
+    <div class="my-assets">
+      <!-- Heading for My Assets Section -->
+      <h3 class="asset-heading">My Assets</h3>
+  
+      <div class="table-header">
+        <div></div> <!-- placeholder to push the button to right -->
+        <button (click)="goToBuyAsset()" class="primary-action-btn">Buy Asset</button>
+      </div>
+  
+      <table class="assets-table" *ngIf="assets && assets.length > 0; else noAssets">
+        <thead>
+          <tr>
+            <th>Portfolio Name</th>
+            <th>Asset Name</th>
+            <th>Asset Type</th>
+            <th>Quantity</th>
+            <th>Current Price</th>
+            <th>Date Purchased</th>
+            <th>Sell Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of assets">
+            <td>{{asset.PortfolioName}}</td>
+            <td>{{ asset.AssetName }}</td>
+            <td>{{ asset.AssetType }}</td>
+            <td class="text-right">{{ asset.Quantity }}</td>
+            <td class="text-right">{{ asset.CurrentPrice | currency:'USD' }}</td>
+            <td class="text-center">{{ asset.DatePurchased | date:'yyyy-MM-dd' }}</td>
+            <td class="text-center"><button class="sell-button" (click)="goToSellAsset(asset)">Sell</button></td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- No Assets Template -->
+      <ng-template #noAssets>
+        <p>No assets available to display.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
