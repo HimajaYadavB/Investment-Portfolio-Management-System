@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { ProfileMenuComponent } from '../profile-menu/profile-menu.component';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tabs',
@@ -10,20 +11,49 @@ import { ProfileMenuComponent } from '../profile-menu/profile-menu.component';
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent {
-  activeTab: string = 'user-dashboard'; // Default to dashboard
-  activeSubTab: string = 'user-dividend';
-  userName: string="";
-  userEmail: string="";
+export class TabsComponent implements OnInit {
+  activeTab: string = '';
+  dropdownTab: string | null = null;
+  userName = '';
+  userEmail = '';
 
   constructor(private router: Router) {}
 
-  switchTab(tabRoute: string) {
-    this.activeTab = tabRoute;
-    this.activeSubTab = '';
-  
-    this.router.navigate([tabRoute]); // Now go to /user-payments directly
-  }
-  
+  ngOnInit() {
+    this.setActiveTabFromUrl(this.router.url);
 
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.setActiveTabFromUrl(event.urlAfterRedirects);
+      });
+  }
+
+  private setActiveTabFromUrl(url: string) {
+    if (url.startsWith('/user-trade')) {
+      this.activeTab = 'user-trade';
+    } else if (url.startsWith('/user-payments')) {
+      this.activeTab = 'user-payments';
+    } else if (url.startsWith('/user-dashboard')) {
+      this.activeTab = 'user-dashboard';
+    } else {
+      this.activeTab = ''; // fallback
+    }
+  }
+
+  toggleDropdown(tabName: string) {
+    console.log("Toggling dropdown for", tabName);
+    this.dropdownTab = this.dropdownTab === tabName ? null : tabName;
+  }
+
+  switchTab(path: string) {
+    this.dropdownTab = null;
+    this.router.navigate([path]);
+  }
+
+
+
+  test() {
+    console.log("Clicked!");
+  }
 }

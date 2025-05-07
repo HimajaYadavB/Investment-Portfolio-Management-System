@@ -18,6 +18,7 @@ export class LoginComponent {
   selectedRole: string = '';
   email: string = '';
   password: string = '';
+  loginFailed = false;
 
   constructor(
     private router: Router,
@@ -33,23 +34,41 @@ export class LoginComponent {
     switch (this.selectedRole) {
       case 'admin':
         this.adminService.adminloginservice(credentials).subscribe({
-          next: () => this.router.navigate(['/admin-dashboard']),
-          error: (err) => console.error('Admin login error:', err)
+          next: () => {
+            this.router.navigate(['/admin-dashboard']);
+            this.loginFailed=false;
+          },
+          error: (err) =>{
+             console.error('Admin login error:', err);
+             this.loginFailed=true;
+            }
         });
         break;
 
       case 'broker':
         this.brokerService.brokerLoginService(credentials).subscribe({
-          next: () => this.router.navigate(['/broker-dashboard']),
-          error: (err) => alert('Broker login failed!')
+          next: () => {
+            this.router.navigate(['/broker-dashboard']);
+            this.loginFailed=false;
+          },
+          error: (err) => {
+            console.log('Broker login failed!');
+            this.loginFailed=true;
+          }
         });
         break;
 
       case 'user':
         this.dash.setEmailService(this.email);
         this.userService.loginservice(credentials).subscribe({
-          next: () => this.router.navigate(['/user-dashboard']),
-          error: (err) => console.error('User login error:', err)
+          next: () => {
+            this.router.navigate(['/user-dashboard']);
+            this.loginFailed=false;
+          },
+          error: (err) => {
+            console.error('User login error:', err);
+            this.loginFailed=true;
+          }
         });
         break;
 

@@ -1,166 +1,27 @@
-/* Full-width Background for Tabs */
-.tabs-container {
+.tabs {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Normal tab styling */
+.tabs li {
+  padding: 10px 20px;
+  cursor: pointer;
   position: relative;
-  width: 100%; /* Makes the background span the full width */
-  background-color: #f0f8ff; /* Light blue background for the bar */
-  padding: 10px 0; /* Vertical padding for the background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  border-bottom: 1px solid #ddd; /* Optional: Add a bottom border for separation */
-  z-index: 10; /* Ensure it stays on top of other elements */
-}
-.headingg {
-  text-decoration: none;
-  font-size: 30px;
-  color: #0d4879; /* Darker blue */
-  font-weight: bold;
-  margin-left: 20px; /* Optional */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 0.5px;
 }
 
-
-/* Align Tabs to the Top-Right */
-.tabs {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute; /* Position them relative to the .tabs-container */
-  right: 10px; /* Align to the right edge */
-  top: 50%; /* Center vertically within the container */
-  transform: translateY(-50%); /* Adjust for perfect vertical centering */
-}
-
-.tabs li {
-  padding: 8px 16px; /* Compact size for buttons */
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #ffffff; /* White buttons for contrast */
-  color: #333;
-  font-weight: bold;
-  font-size: 14px; /* Smaller font size for compact design */
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-/* Hover Effect */
-.tabs li:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.03); /* Slight hover zoom */
-}
-
-/* Active Tab Style */
-.tabs li.active {
-  background-color: #007bff;
-  color: #fff;
-  border-color: #007bff;
-}
-
-.tabs {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.tabs li {
-  padding: 8px 16px;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #ffffff;
-  color: #333;
-  font-weight: bold;
-  font-size: 14px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-/* Hover Effect */
-.tabs li:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.03);
-}
-
-/* Active Tab Style */
-.tabs li.active {
-  background-color: #007bff;
-  color: #fff;
-  border-color: #007bff;
-}
-
-/* Profile tab pushed to the right */
+/* Push profile tab to right */
 .tabs li.profile-tab {
   margin-left: auto;
-  padding: 0; /* Let the app-profile-menu handle its own padding */
-  border: none;
-  background: none;
-  cursor: default;
-}
-.tabs {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  align-items: center; /* Ensure vertical centering */
-}
-
-.tabs li {
-  padding: 8px 16px;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #ffffff;
-  color: #333;
-  font-weight: bold;
-  font-size: 14px;
-  transition: background-color 0.3s, transform 0.2s;
   display: flex;
   align-items: center;
-}
-
-/* Profile menu tab styling */
-.tabs li.profile-tab {
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: default;
-}
-/* Profile tab styling */
-.tabs li.profile-tab {
+  height: 100%;
   padding: 0;
   background: none;
   border: none;
-  display: flex;
-  align-items: center;
-}
 
-/* Force size and alignment */
-.profile-wrapper {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-/* Optional: remove outer spacing from the component itself */
-app-profile-menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-right: 20px;
 }

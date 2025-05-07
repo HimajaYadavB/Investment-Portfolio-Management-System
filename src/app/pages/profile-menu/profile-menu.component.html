@@ -1,9 +1,13 @@
-<div class="profile-wrapper" (click)="toggleDropdown()" tabindex="0" (blur)="closeDropdown()">
-    <div class="profile-icon">👤</div>
-    <div class="dropdown-menu" *ngIf="showDropdown">
-      <p><strong>{{ userName }}</strong></p>
-      <p>{{ userEmail }}</p>
-      <button (click)="logout()">Logout</button>
-    </div>
+<div class="profile-wrapper" (click)="openModal()" tabindex="0">
+  <div class="profile-icon">👤</div>
+</div>
+
+<!-- Modal -->
+<div class="profile-modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <p><strong>{{ userName }}</strong></p>
+    <p>{{ userEmail }}</p>
+    <button (click)="logout()">Logout</button>
   </div>
-  
+</div>

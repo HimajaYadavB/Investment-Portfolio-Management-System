@@ -14,17 +14,19 @@ export class ProfileMenuComponent {
   @Input() userName: string = 'User Name';
   @Input() userEmail: string = 'user@example.com';
 
-  showDropdown: boolean = false;
+  //showDropdown: boolean = false;
 
   constructor(private router: Router) {}
 
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
-  }
+  showModal = false;
 
-  closeDropdown() {
-    setTimeout(() => this.showDropdown = false, 200);
-  }
+openModal() {
+  this.showModal = true;
+}
+
+closeModal() {
+  this.showModal = false;
+}
 
   logout() {
     localStorage.clear();

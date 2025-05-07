@@ -1,21 +1,34 @@
 <div class="tabs-container">
-  <!-- Main Tabs Header -->
   <header class="main-tabs-header">
     <h2 class="headingg">Investment Portfolio Management</h2>
     <ul class="tabs">
+      <!-- Home -->
       <li [class.active]="activeTab === 'user-dashboard'" (click)="switchTab('user-dashboard')">Home</li>
-      <!-- <li [class.active]="activeTab === 'user-portfolio'" (click)="switchTab('user-portfolio')">Portfolios</li>
-      <li [class.active]="activeTab === 'user-asset'" (click)="switchTab('user-asset')">Assets</li> -->
-      <li [class.active]="activeTab === 'user-trade'" (click)="switchTab('user-trade')">Trades</li> 
-      <!-- <li [class.active]="activeTab === 'user-dividend'" (click)="switchTab('user-dividend')">Dividends</li>
 
-      <li [class.active]="activeTab === 'user-taxes'" (click)="switchTab('user-taxes')">Taxes</li> -->
-      <li [class.active]="activeTab === 'user-payments'" (click)="switchTab('user-payments')">Payments</li>
-      <li class="profile-tab"><app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
+      <li [class.active]="activeTab === 'add-portfolio'" (click)="switchTab('add-portfolio')">Accounts</li>
+
+      <!-- Trades Dropdown -->
+      <li class="dropdown" [class.active]="activeTab === 'user-trade'" [class.show]="dropdownTab === 'user-trade'">
+        <span (click)="toggleDropdown('user-trade')">Trades</span>
+        <ul class="dropdown-menu" *ngIf="dropdownTab === 'user-trade'">
+          <li (click)="switchTab('user-trade/portfolios')">Portfolios</li>
+          <li (click)="switchTab('user-trade/assets')">Assets</li>
+        </ul>
+      </li>
+
+      <!-- Payments Dropdown -->
+      <li class="dropdown" [class.active]="activeTab === 'user-payments'" [class.show]="dropdownTab === 'user-payments'">
+        <span (click)="toggleDropdown('user-payments')">Payments</span>
+        <ul class="dropdown-menu" *ngIf="dropdownTab === 'user-payments'">
+          <li (click)="switchTab('user-payments/dividends')">Dividends</li>
+          <li (click)="switchTab('user-payments/taxes')">Taxes</li>
+        </ul>
+      </li>
+
+      <!-- Profile Menu -->
+      <li class="profile-tab">
+        <app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
       </li>
     </ul>
   </header>
-
-
-
 </div>

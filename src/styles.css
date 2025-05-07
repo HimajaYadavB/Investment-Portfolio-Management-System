@@ -156,3 +156,109 @@ select:focus {
   outline: none;
   box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
 }
+
+/* Container with dark background */
+.tabs-container {
+  width: 100%;
+  background-color: #003657;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #00263d;
+  z-index: 10;
+}
+
+/* Heading style */
+.headingg {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  margin-left: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main tabs container */
+.tabs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 20px;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Tabs style */
+.tabs li {
+  position: relative;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect */
+.tabs li:hover {
+  background-color: #00588a;
+}
+
+/* Active tab */
+.tabs li.active {
+  background-color: #00588a;
+}
+
+/* Dropdown menu container */
+.tabs li.dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #00588a;
+  min-width: 150px;
+  border-radius: 4px;
+  padding: 5px 0;
+  z-index: 1000;
+}
+
+/* Show dropdown when dropdownTab matches */
+.tabs li.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown items */
+.tabs li .dropdown-menu li {
+  padding: 10px 15px;
+  color: white;
+  background-color: #00588a;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tabs li .dropdown-menu li:hover {
+  background-color: #007acc;
+}
+
+/* Profile tab - pushed to right */
+.tabs li.profile-tab {
+  margin-left: auto;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.tabs .dropdown {
+  position: relative;
+}
+
+
+
+.tabs li.active > span {
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+
+
+
+

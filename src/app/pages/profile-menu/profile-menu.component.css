@@ -1,62 +1,126 @@
-/* Ensure proper alignment of profile icon tab */
-.tabs li.profile-tab {
-    margin-left: auto; /* Push profile tab to the far right */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0; /* Remove extra padding */
-    cursor: pointer;
-  }
-  
-  /* Profile icon styling */
-  .profile-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #6badda; /* Green background */
-    color: white;
-    font-size: 18px; /* Adjust icon size */
-    cursor: pointer;
-  }
-  
-  /* Dropdown menu styling */
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 45px; /* Position it below the profile icon */
-    right: 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    width: 150px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .profile-wrapper:hover .dropdown-menu {
-    display: block; /* Show dropdown on hover */
-  }
-  
-  .dropdown-menu p {
-    font-size: 14px;
-    margin: 5px 0;
-  }
-  
-  .dropdown-menu button {
-    width: 100%;
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .dropdown-menu button:hover {
-    background-color: #d32f2f;
-  }
-  
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #8bc2ea;
+  cursor: pointer;
+  position: relative;
+  margin-right: 20px;
+}
+
+/* Optional: icon inside */
+.profile-icon {
+  color: #3b0a66;
+  font-size: 20px;
+}
+
+/* Dropdown menu */
+.profile-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 160px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+/* Modal background */
+.profile-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+/* Modal box */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Logout button */
+.modal-content button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #d32f2f;
+}
+
+/* Dark translucent backdrop – stretches full screen */
+.profile-modal {
+  position: fixed;
+  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+  background: rgba(0,0,0,.35);
+  z-index: 1000;
+}
+
+/* The actual white pop-up box */
+.modal-content {
+  position: absolute;
+  top: 15px;                /* distance down from top-right */
+  right: 15px;              /* distance in from right edge  */
+  width: 260px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  padding: 18px 20px 22px;
+  text-align: center;
+}
+
+/* Close (×) icon */
+.close-button {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Logout button */
+.modal-content button {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px;
+  background:#f44336;
+  color:#fff;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
+.modal-content button:hover{
+  background:#d32f2f;
+}
