@@ -18,6 +18,8 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { UserPaymentsComponent } from './pages/user-payments/user-payments.component';
 import { TradeComponent } from './pages/trade/trade.component';
+import { ApprovePortfolioComponent } from './pages/approve-portfolio/approve-portfolio.component';
+import { AccountComponent } from './pages/account/account.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default Route
@@ -25,7 +27,6 @@ export const routes: Routes = [
   { path: 'broker-dashboard', component: BrokerComponent },
   { path: 'user-register', component: RegisterComponent },
   { path: 'user-dashboard', component: DashboardComponent },
-  { path: 'user-portfolio', component: PortfolioComponent },
   { path: 'user-asset', component: AssetComponent },
   { path: 'user-dividend', component: DividendComponent },
   {path: 'buy-asset', component:BuyAssetComponent},
@@ -55,6 +56,14 @@ export const routes: Routes = [
       { path: '', redirectTo: 'portfolios', pathMatch: 'full' }, // default sub-tab
       { path: 'portfolios', component: PortfolioComponent },
       { path: 'assets', component: AssetComponent }
+    ]
+  },
+  { path: 'user-portfolios', 
+    component: AccountComponent,
+    children:[
+      {path:'', redirectTo:'add', pathMatch:'full'},
+      {path:'add', component: AddPortfolioComponent},
+      {path:'approve', component:ApprovePortfolioComponent}
     ]
   }
   

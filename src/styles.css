@@ -13,10 +13,10 @@
   
 
   h3 {
-    font-size: 25px;
-    color: #055fc0; /* Dark navy blue, richer than #007bff */
+    font-size: 20px;
+    color: #003657; /* Dark navy blue, richer than #007bff */
     font-weight: bold;
-    border-bottom: 2px solid #004085; /* Matches the heading color */
+    border-bottom: 2px solid #00588a; /* Matches the heading color */
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 20px;
@@ -44,7 +44,7 @@
   
   /* Global th background and font color */
   th {
-    background-color: #007bff;
+    background-color: #003657;
     color: #fff;
     font-weight: bold;
     font-size: 16px;
@@ -65,7 +65,7 @@
     color: #555;
   }
   .primary-action-btn {
-    background-color: #28a745;
+    background-color: #003657;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -82,7 +82,7 @@
   }
   
   .primary-action-btn:hover {
-    background-color: #0056b3;
+    background-color: #00588a;
     transform: scale(1.05);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
@@ -93,7 +93,7 @@
 
   
   button {
-    background-color: #007bff; 
+    background-color: #003657; 
     color: white;
     border: none;
     padding: 12px 20px;
@@ -106,7 +106,7 @@
   }
   
   button:hover {
-    background-color: #0056b3; 
+    background-color: #00588a; 
     transform: scale(1.05); 
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
@@ -152,7 +152,7 @@ select {
 
 /* Optional: Focus effect */
 select:focus {
-  border-color: #4CAF50;
+  border-color: #003657;
   outline: none;
   box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
 }

@@ -3,7 +3,7 @@
     <header class="main-tabs-header">
       <h2 class="headingg">Investment Portfolio Management</h2>
       <ul class="tabs">
-        <li [class.active]="activeTab === 'admin-dashboard'" (click)="switchTab('admin-dashboard')">Home</li>
+        <li [class.active]="activeTab === 'admin-dashboard'" (click)="switchTab('admin-dashboard')">Dashboard</li>
         <li [class.active]="activeTab === 'approve-brokers'" (click)="switchTab('approve-brokers')">Approve Brokers</li>
         <li [class.active]="activeTab === 'add-dividends'" (click)="switchTab('add-dividends')">Add Dividends</li>
         <li class="profile-tab"><app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>

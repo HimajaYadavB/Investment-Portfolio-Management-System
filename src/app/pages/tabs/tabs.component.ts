@@ -36,6 +36,8 @@ export class TabsComponent implements OnInit {
       this.activeTab = 'user-payments';
     } else if (url.startsWith('/user-dashboard')) {
       this.activeTab = 'user-dashboard';
+    } else if (url.startsWith('/user-portfolios')) {
+      this.activeTab = 'user-portfolios';
     } else {
       this.activeTab = ''; // fallback
     }
@@ -51,9 +53,4 @@ export class TabsComponent implements OnInit {
     this.router.navigate([path]);
   }
 
-
-
-  test() {
-    console.log("Clicked!");
-  }
 }
