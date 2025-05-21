@@ -1,11 +1,9 @@
-<div class="tabs-container">
+<!-- <div class="tabs-container">
   <header class="main-tabs-header">
     <h2 class="headingg">Investment Portfolio Management</h2>
     <ul class="tabs">
-      <!-- Home -->
       <li [class.active]="activeTab === 'user-dashboard'" (click)="switchTab('user-dashboard')">Dashboard</li>
 
-      <!-- <li [class.active]="activeTab === 'add-portfolio'" (click)="switchTab('add-portfolio')">Accounts</li> -->
       <li class="dropdown" [class.active]="activeTab === 'user-portfolios'" [class.show]="dropdownTab === 'user-portfolios'">
         <span (click)="toggleDropdown('user-portfolios')">Accounts</span>
         <ul class="dropdown-menu" *ngIf="dropdownTab === 'user-portfolios'">
@@ -14,8 +12,6 @@
         </ul>
       </li>
 
-
-      <!-- Trades Dropdown -->
       <li class="dropdown" [class.active]="activeTab === 'user-trade'" [class.show]="dropdownTab === 'user-trade'">
         <span (click)="toggleDropdown('user-trade')">Trades</span>
         <ul class="dropdown-menu" *ngIf="dropdownTab === 'user-trade'">
@@ -24,7 +20,7 @@
         </ul>
       </li>
 
-      <!-- Payments Dropdown -->
+
       <li class="dropdown" [class.active]="activeTab === 'user-payments'" [class.show]="dropdownTab === 'user-payments'">
         <span (click)="toggleDropdown('user-payments')">Payments</span>
         <ul class="dropdown-menu" *ngIf="dropdownTab === 'user-payments'">
@@ -33,10 +29,71 @@
         </ul>
       </li>
 
-      <!-- Profile Menu -->
       <li class="profile-tab">
         <app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
       </li>
     </ul>
   </header>
-</div>
+</div> -->
+<!-- <mat-toolbar color="primary">
+
+  <button mat-button (click)="switchTab('user-dashboard')" [class.active]="activeTab ==='user-dashboard'">Dashboard</button>
+
+  <button mat-button [matMenuTriggerFor]="accountsMenu"
+          [class.active]="activeTab.startsWith('user-portfolios')">
+    Accounts
+  </button>
+  <mat-menu #accountsMenu="matMenu" color="primary">
+    <button mat-menu-item (click)="switchTab('user-portfolios/add')">Add</button>
+    <button mat-menu-item (click)="switchTab('user-portfolios/approve')">Approve</button>
+  </mat-menu>
+
+
+  <button mat-button [matMenuTriggerFor]="tradesMenu"  [class.active]="activeTab.startsWith('user-trade')">Trades</button>
+  <mat-menu #tradesMenu="matMenu">
+    <button mat-menu-item (click)="switchTab('user-trade/portfolios')">Portfolios</button>
+    <button mat-menu-item (click)="switchTab('user-trade/assets')">Assets</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="paymentsMenu"
+          [class.active]="activeTab.startsWith('user-payments')">
+    Payments
+  </button>
+  <mat-menu #paymentsMenu="matMenu">
+    <button mat-menu-item (click)="switchTab('user-payments/dividends')">Dividends</button>
+    <button mat-menu-item (click)="switchTab('user-payments/taxes')">Taxes</button>
+  </mat-menu>
+  <span class="spacer"></span>
+
+  <app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
+</mat-toolbar> -->
+
+<mat-toolbar class="full-width-toolbar">
+  <span class="nav-text">
+    
+    <a (click)="switchTab('user-dashboard')" [ngClass]="{ 'active-tab': activeTab === 'user-dashboard' }">Dashboard</a>
+    |
+    <a [matMenuTriggerFor]="accountsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-portfolios') }">Accounts</a>
+    <mat-menu #accountsMenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-portfolios/add')">Add</button>
+      <button mat-menu-item (click)="switchTab('user-portfolios/approve')">Approve</button>
+    </mat-menu>
+    |
+    <a [matMenuTriggerFor]="tradesMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-trade') }">Trades</a>
+    <mat-menu #tradesMenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-trade/portfolios')">Portfolios</button>
+      <button mat-menu-item (click)="switchTab('user-trade/assets')">Assets</button>
+    </mat-menu>
+    |
+    <a [matMenuTriggerFor]="paymentsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-payments') }">Payments</a>
+    <mat-menu #paymentsMenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-payments/dividends')">Dividends</button>
+      <button mat-menu-item (click)="switchTab('user-payments/taxes')">Taxes</button>
+    </mat-menu>
+    
+  </span>
+
+  <span class="spacer"></span>
+  <app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
+</mat-toolbar>
+

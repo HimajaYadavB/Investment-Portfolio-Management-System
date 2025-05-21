@@ -265,3 +265,23 @@ select:focus {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-menu-panel {
+  background-color: #003657 !important;
+  color: white !important;
+}
+
+.mat-menu-content {
+  background-color: #003657 !important;
+}
+
+.mat-menu-item {
+  background-color: #003657 !important;
+  color: white !important;
+  font-weight: 500;
+}
+
+.mat-menu-item:hover {
+  background-color: #00588a !important;
+}

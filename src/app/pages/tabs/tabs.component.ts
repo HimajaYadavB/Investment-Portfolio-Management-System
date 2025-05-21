@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ProfileMenuComponent } from '../profile-menu/profile-menu.component';
 import { filter } from 'rxjs/operators';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-tabs',
-  imports: [CommonModule, ProfileMenuComponent],
+  imports: [CommonModule, ProfileMenuComponent, MatToolbarModule,MatMenuModule],
   standalone: true,
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
