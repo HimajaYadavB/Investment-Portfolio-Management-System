@@ -1,0 +1,30 @@
+<div class="custom-paginator-wrapper">
+  <!-- Left Section -->
+  <div class="paginator-left">
+    <span class="range-label">
+      {{ pageIndex * pageSize + 1 }} – {{ getEndIndex() }} of {{ totalItems }}
+    </span>
+
+    <div class="show-inline-group">
+      <span class="show-label">Show</span>
+      <select class="dropdown" [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)">
+        <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+      </select>
+      <span class="items-label">items</span>
+    </div>
+  </div>
+
+  <!-- Right Pagination Buttons -->
+  <div class="page-buttons">
+    <button (click)="changePage(pageIndex - 1)" [disabled]="pageIndex === 0">Previous</button>
+
+    <button
+      *ngFor="let page of getVisiblePages()"
+      [class.active-page]="page === pageIndex"
+      (click)="changePage(page)">
+      {{ page + 1 }}
+    </button>
+
+    <button (click)="changePage(pageIndex + 1)" [disabled]="pageIndex >= totalPages - 1">Next</button>
+  </div>
+</div>

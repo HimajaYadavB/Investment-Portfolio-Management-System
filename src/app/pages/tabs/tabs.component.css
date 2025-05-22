@@ -1,4 +1,4 @@
-.tabs {
+/* .tabs {
   display: flex;
   align-items: center;
   list-style: none;
@@ -6,14 +6,13 @@
   margin: 0;
 }
 
-/* Normal tab styling */
+
 .tabs li {
   padding: 10px 20px;
   cursor: pointer;
   position: relative;
 }
 
-/* Push profile tab to right */
 .tabs li.profile-tab {
   margin-left: auto;
   display: flex;
@@ -24,17 +23,8 @@
   border: none;
 
   margin-right: 20px;
-}
+} */
 
-/* .spacer {
-  flex: 1 1 auto;
-}
-
-
-
-button.active {
-  background-color: #00588a; 
-*/
 .full-width-toolbar {
   width: 100%;
   background-color: #003657 !important;
@@ -46,28 +36,25 @@ button.active {
   align-items: center;
   gap: 0.5rem; /* Controls spacing between items */
   font-weight: 500;
+  font-size: 16px;
 }
 
 .nav-text a {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 5px 13px;
   cursor: pointer;
 }
 
-.nav-text a:hover {
-  text-decoration: underline;
-}
-
-.nav-text a.active-tab {
+.nav-text a:hover,.nav-text a.active-tab {
   background-color: #00588a;
   border-radius: 4px;
 }
 
+
+
 .spacer {
   flex: 1 1 auto;
 }
-
-
 
 

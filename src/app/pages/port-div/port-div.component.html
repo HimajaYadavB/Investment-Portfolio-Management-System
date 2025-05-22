@@ -1,0 +1,74 @@
+<div class="page-container">
+  <!-- Section Title Bar -->
+  <div class="section-header">
+    <span class="section-title">My Portfolio Dividends - {{ dataSource.data.length }} items</span>
+  </div>
+
+  <!-- Grid Box Container -->
+  <div class="table-container-box">
+    <div class="grid-wrapper">
+      <!-- Filter box -->
+      <div class="filter-box">
+        <span class="filter-label">Filter:</span>
+        <mat-form-field appearance="outline" class="filter-input">
+          <input matInput #input placeholder="contains" (keyup)="applyFilter(input.value)">
+        </mat-form-field>
+      </div>
+
+      <!-- Table -->
+       <div class="table-and-pagination-wrapper">
+        <div class="table-scroll-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1 mat-mdc-table" multiTemplateDataRows>
+<ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox class="custom-checkbox" (change)="masterToggle()" disableRipple
+                          [checked]="isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row" >
+            <mat-checkbox class="custom-checkbox" (click)="$event.stopPropagation()" disableRipple
+                          (change)="selection.toggle(row)"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+            <!-- <mat-icon style="font-size: 18px; margin-left: 8px; color: #003657;">edit</mat-icon> -->
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="PortfolioName">
+          <th mat-header-cell *matHeaderCellDef sticky> Portfolio Name 
+            <mat-icon class="custom-sort-icon" (click)="sortData('PortfolioName')">{{getSortIcon('PortfolioName')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{ element.PortfolioName }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="PortfolioType">
+          <th mat-header-cell *matHeaderCellDef sticky> Portfolio Type 
+            <mat-icon class="custom-sort-icon" (click)="sortData('PortfolioType')">{{getSortIcon('PortfolioType')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{ element.PortfolioType }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalDividendAmount">
+          <th mat-header-cell *matHeaderCellDef sticky> Total Dividend Amount 
+            <mat-icon class="custom-sort-icon" (click)="sortData('TotalDividendAmount')">{{getSortIcon('TotalDividendAmount')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{ element.TotalDividendAmount | currency:'USD' }} </td>
+        </ng-container>
+
+        <!-- Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+      <!-- Paginator -->
+      <app-custom-paginator
+        [totalItems]="totalItems"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        [pageIndex]="pageIndex"
+        (pageChange)="handlePageChange($event)">
+      </app-custom-paginator>
+      </div>
+    </div>
+  </div>
+</div>

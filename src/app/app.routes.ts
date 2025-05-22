@@ -20,6 +20,8 @@ import { UserPaymentsComponent } from './pages/user-payments/user-payments.compo
 import { TradeComponent } from './pages/trade/trade.component';
 import { ApprovePortfolioComponent } from './pages/approve-portfolio/approve-portfolio.component';
 import { AccountComponent } from './pages/account/account.component';
+import { AssetDivComponent } from './pages/asset-div/asset-div.component';
+import { PortDivComponent } from './pages/port-div/port-div.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default Route
@@ -39,15 +41,24 @@ export const routes: Routes = [
   {path:'add-dividends', component:AdminAddDividendsComponent},
   {path:'admin-dashboard', component:AdminDashboardComponent},
   {path:'admin-login', component:AdminLoginComponent},
-  {
-    path: 'user-payments',
-    component: UserPaymentsComponent, // the wrapper component
-    children: [
-      { path: '', redirectTo: 'dividends', pathMatch: 'full' }, // default sub-tab
-      { path: 'dividends', component: DividendComponent },
-      { path: 'taxes', component: GetTaxesComponent }
-    ]
-  },
+{
+  path: 'user-payments',
+  component: UserPaymentsComponent,
+  children: [
+    {
+      path: 'dividends',
+      component: DividendComponent,
+      children: [
+        { path: '', redirectTo: 'portfolio-dividend', pathMatch: 'full' },
+        { path: 'portfolio-dividend', component: PortDivComponent },
+        { path: 'asset-dividend', component: AssetDivComponent }
+      ]
+    },
+    { path: 'taxes', component: GetTaxesComponent }
+  ]
+}
+
+,
 
   {
     path: 'user-trade',

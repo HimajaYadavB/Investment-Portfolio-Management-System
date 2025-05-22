@@ -1,45 +1,123 @@
 <div class="page-container">
-  <div class="assets-section">
-  
+  <!-- Section Title Bar -->
+  <div class="section-header">
+    <span class="section-title">My Assets - {{ assets.length }} items</span>
+  </div>
 
-    <div class="my-assets">
-      <!-- Heading for My Assets Section -->
-      <h3 class="asset-heading">My Assets</h3>
-  
+  <!-- Grid Box Container -->
+  <div class="table-container-box">
+    <div class="grid-wrapper">
+            <div class="filter-box">
+      <span class="filter-label">Filter:</span>
+      <mat-form-field appearance="outline" class="filter-input">
+        <input matInput #input placeholder="contains" (keyup)="applyFilter(input.value)">
+      </mat-form-field>
+    </div>
       <div class="table-header">
-        <div></div> <!-- placeholder to push the button to right -->
+        <div></div>
         <button (click)="goToBuyAsset()" class="primary-action-btn">Buy Asset</button>
       </div>
-  
-      <table class="assets-table" *ngIf="assets && assets.length > 0; else noAssets">
-        <thead>
-          <tr>
-            <th>Portfolio Name</th>
-            <th>Asset Name</th>
-            <th>Asset Type</th>
-            <th>Quantity</th>
-            <th>Current Price</th>
-            <th>Date Purchased</th>
-            <th>Sell Stock</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let asset of assets">
-            <td>{{asset.PortfolioName}}</td>
-            <td>{{ asset.AssetName }}</td>
-            <td>{{ asset.AssetType }}</td>
-            <td class="text-right">{{ asset.Quantity }}</td>
-            <td class="text-right">{{ asset.CurrentPrice | currency:'USD' }}</td>
-            <td class="text-center">{{ asset.DatePurchased | date:'yyyy-MM-dd' }}</td>
-            <td class="text-center"><button class="sell-button" (click)="goToSellAsset(asset)">Sell</button></td>
-          </tr>
-        </tbody>
+      <div class="table-and-pagination-wrapper">
+        <div class="table-scroll-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort
+      class="mat-elevation-z1 mat-mdc-table" multiTemplateDataRows>
+        <!-- Checkbox + Action Icons Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="masterToggle()" disableRipple
+                          [checked]="isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" disableRipple
+                          (change)="selection.toggle(row)"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+            <!-- <mat-icon style="font-size: 18px; margin-left: 8px; color: #003657;">edit</mat-icon> -->
+          </td>
+        </ng-container>
+        <!-- Portfolio Name Column -->
+        <ng-container matColumnDef="PortfolioName">
+          <th mat-header-cell *matHeaderCellDef sticky> Portfolio Name 
+            <mat-icon class="custom-sort-icon" (click)="sortData('PortfolioName')">{{getSortIcon('PortfolioName')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{ element.PortfolioName }} </td>
+        </ng-container>
+
+        <!-- Asset Name Column -->
+        <ng-container matColumnDef="AssetName">
+          <th mat-header-cell *matHeaderCellDef sticky> Asset Name 
+            <mat-icon class="custom-sort-icon" (click)="sortData('AssetName')">{{getSortIcon('AssetName')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{ element.AssetName }} </td>
+        </ng-container>
+
+        <!-- Asset Type Column -->
+        <ng-container matColumnDef="AssetType">
+          <th mat-header-cell *matHeaderCellDef sticky> Asset Type 
+             <mat-icon class="custom-sort-icon" (click)="sortData('AssetType')">{{getSortIcon('AssetType')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{ element.AssetType }} </td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="Quantity">
+          <th mat-header-cell *matHeaderCellDef sticky> Quantity 
+             <mat-icon class="custom-sort-icon" (click)="sortData('Quantity')">{{getSortIcon('Quantity')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-right"> {{ element.Quantity }} </td>
+        </ng-container>
+
+        <!-- Current Price Column -->
+        <ng-container matColumnDef="CurrentPrice">
+          <th mat-header-cell *matHeaderCellDef sticky> Current Price 
+             <mat-icon class="custom-sort-icon" (click)="sortData('CurrentPrice')">{{getSortIcon('CurrentPrice')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-right"> {{ element.CurrentPrice | currency:'USD' }} </td>
+        </ng-container>
+
+        <!-- Date Purchased Column -->
+        <ng-container matColumnDef="DatePurchased">
+          <th mat-header-cell *matHeaderCellDef sticky> Date Purchased 
+             <mat-icon class="custom-sort-icon" (click)="sortData('DatePurchased')">{{getSortIcon('DatePurchased')}}</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center"> {{ element.DatePurchased | date:'yyyy-MM-dd' }} </td>
+        </ng-container>
+
+        <!-- Sell Button Column -->
+        <ng-container matColumnDef="Sell">
+          <th mat-header-cell *matHeaderCellDef sticky> Sell Stock </th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            <button class="sell-button" (click)="goToSellAsset(element)">Sell</button>
+          </td>
+        </ng-container>
+
+        <!-- Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-  
+</div>
       <!-- No Assets Template -->
       <ng-template #noAssets>
         <p>No assets available to display.</p>
       </ng-template>
+
+      <app-custom-paginator
+  [totalItems]="totalItems"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  [pageIndex]="pageIndex"
+  (pageChange)="handlePageChange($event)">
+</app-custom-paginator>
+
+
+      <!-- Paginator -->
+      <!-- <mat-paginator [length]="dataSource.data.length"
+                    [pageSize]="2" 
+                    [pageSizeOptions]="[2, 5, 10, 20]">
+    </mat-paginator> -->
+    </div>
     </div>
   </div>
 </div>

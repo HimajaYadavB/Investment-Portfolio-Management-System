@@ -72,23 +72,28 @@
   <span class="nav-text">
     
     <a (click)="switchTab('user-dashboard')" [ngClass]="{ 'active-tab': activeTab === 'user-dashboard' }">Dashboard</a>
-    |
+    
     <a [matMenuTriggerFor]="accountsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-portfolios') }">Accounts</a>
     <mat-menu #accountsMenu="matMenu">
       <button mat-menu-item (click)="switchTab('user-portfolios/add')">Add</button>
       <button mat-menu-item (click)="switchTab('user-portfolios/approve')">Approve</button>
     </mat-menu>
-    |
+    
     <a [matMenuTriggerFor]="tradesMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-trade') }">Trades</a>
     <mat-menu #tradesMenu="matMenu">
       <button mat-menu-item (click)="switchTab('user-trade/portfolios')">Portfolios</button>
       <button mat-menu-item (click)="switchTab('user-trade/assets')">Assets</button>
     </mat-menu>
-    |
+    
     <a [matMenuTriggerFor]="paymentsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-payments') }">Payments</a>
     <mat-menu #paymentsMenu="matMenu">
-      <button mat-menu-item (click)="switchTab('user-payments/dividends')">Dividends</button>
+      <button mat-menu-item [matMenuTriggerFor]="divsubmenu">Dividends</button>
       <button mat-menu-item (click)="switchTab('user-payments/taxes')">Taxes</button>
+    </mat-menu>
+
+    <mat-menu #divsubmenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-payments/dividends/portfolio-dividend')">Portfolio Dividends</button>
+      <button mat-menu-item  (click)="switchTab('user-payments/dividends/asset-dividend')">Asset Dividends</button>
     </mat-menu>
     
   </span>

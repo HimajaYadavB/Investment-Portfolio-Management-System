@@ -1,20 +1,16 @@
 .table-and-pagination-wrapper {
-
-  width: 80%;        /* You can adjust this to 800px, 600px etc. */
-  max-width: 80%;     /* Keeps it responsive if needed */
+  width: 80%;        
+  max-width: 80%;    
   display: flex;
   flex-direction:column;
   align-items: stretch;
   justify-content: center;
   margin: 0 auto; 
 }
-
-
-/* th:nth-child(1), td:nth-child(1) { width: 10%; } 
-th:nth-child(2), td:nth-child(2) { width: 30%; }  
-th:nth-child(3), td:nth-child(3) { width: 30%; } 
-th:nth-child(3), td:nth-child(3) { width: 30%; }  */
-
+.table-scroll-wrapper {
+  overflow-x:auto !important;
+  width: 100% !important;
+}
 
 ::ng-deep .mat-mdc-table {
   table-layout: fixed !important;
@@ -24,34 +20,32 @@ th:nth-child(3), td:nth-child(3) { width: 30%; }  */
 /* Reduce column widths */
 ::ng-deep th.mat-mdc-header-cell:nth-child(1),
 ::ng-deep td.mat-mdc-cell:nth-child(1) {
-  width: 40px !important; /* Checkbox column */
+  width: 20px !important; /* Checkbox column */
 }
 
 ::ng-deep th.mat-mdc-header-cell:nth-child(2),
 ::ng-deep td.mat-mdc-cell:nth-child(2) {
-  width: 130px !important; /* Portfolio Name */
+  width: 100px !important; /* Portfolio Name */
 }
 
 ::ng-deep th.mat-mdc-header-cell:nth-child(3),
 ::ng-deep td.mat-mdc-cell:nth-child(3) {
-  width: 120px !important; /* Portfolio Type */
+  width: 70px !important; /* Portfolio Type */
 }
 
 ::ng-deep th.mat-mdc-header-cell:nth-child(4),
 ::ng-deep td.mat-mdc-cell:nth-child(4) {
-  width: 180px !important; /* Total Dividend Amount */
+  width: 100px !important; /* Total Dividend Amount */
 }
 
 /* Remove scrollbar container constraints */
-.table-scroll-wrapper {
-  overflow-x: hidden !important;
-  width: 100% !important;
-}
+
 
 /* Optional: avoid wrapping issues */
 ::ng-deep .mat-mdc-cell, 
 ::ng-deep .mat-mdc-header-cell {
   white-space: nowrap;
-  overflow: hidden;
+  overflow: auto;
   text-overflow: ellipsis;
 }
+

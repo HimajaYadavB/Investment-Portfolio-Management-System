@@ -20,7 +20,7 @@ export async function getDividends(user: any, req: Request, res: Response, pool:
             .input('userID', sql.Int, userID)
             .execute('GetPortfolioDividends'); 
 
-        if (AdivResult.recordset.length === 0) {
+        if (AdivResult.recordset.length === 0 || PdivResult.recordset.length === 0) {
             return res.status(404).json({ message: 'No Dividends received by the user' });
         }
 

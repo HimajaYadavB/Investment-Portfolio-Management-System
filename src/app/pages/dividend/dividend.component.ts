@@ -1,37 +1,34 @@
 import { Component } from '@angular/core';
-import { UserdashboardService } from '../../services/userdashboard.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { UserdashboardService } from '../../services/userdashboard.service';
+import { DividendDataService } from '../../services/dividend-data.service';
 
 @Component({
   selector: 'app-dividend',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './dividend.component.html',
-  styleUrl: './dividend.component.css'
+  styleUrls: ['./dividend.component.css']
 })
 export class DividendComponent {
-  adiv: any[] = []; 
-  pdiv: any[] = []; 
-  user: any = {};
+  pdiv: any[] = [];
+  adiv: any[] = [];
 
-  constructor(private dash:UserdashboardService){}
+  constructor(private dash: UserdashboardService, private divService: DividendDataService) {}
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.getd();
+  ngAfterContentInit(): void {
+    this.fetchDiv();
   }
 
-  getd(){
+  fetchDiv(){
     this.dash.getDividendService().subscribe({
-      next: (response) => {
-        console.log('Response:', response);
-        this.adiv = response.Adividend;
-        this.pdiv = response.Pdividend;
-        this.user = response.user;
+      next: (res) => {
+        this.divService.portfolioDividends = res.Pdividend;
+        this.divService.assetDividends = res.Adividend;
       },
-      error: (error) => {
-        //alert('Unable to fetch the portfolios');
-        console.error('Error:', error);
+      error: (err) => {
+        console.error('Error fetching dividends:', err);
       }
     });
   }

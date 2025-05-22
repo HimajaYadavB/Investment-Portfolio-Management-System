@@ -1,0 +1,92 @@
+.custom-paginator-wrapper {
+  display: flex;
+  justify-content: space-between;  /* space out left and right sides */
+  align-items: center;
+  padding: 0px 20px;
+  background-color: #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  /* border-top: 1px solid black; */
+  flex-wrap: nowrap;
+}
+
+.paginator-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.show-inline-group {
+  display: flex;
+  align-items: center;
+  gap: 0; /* No space between Show, dropdown, and items */
+}
+
+.range-label,
+.show-label,
+.items-label {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+}
+
+.show-inline-group .show-label,
+.show-inline-group .items-label {
+  margin: 0 4px;
+}
+
+.dropdown {
+  width: 50px;
+  font-size: 13px;
+  height: 26px;
+  margin-top: 13px;
+}
+
+select {
+  padding: 6px 10px;
+  /* border-radius: 4px; */
+  border: 1px solid #ccc;
+  background-color: white;
+  font-weight: 500;
+  color: #003657;
+  appearance: none;
+}
+
+.page-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.page-buttons button {
+  height: 23px;
+  line-height: 23px;
+  font-size: 13px;
+  padding: 0 8px;
+  background-color: white;
+  color: #003657;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid #003657;
+  border-radius: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect only for enabled buttons */
+.page-buttons button:hover:not(:disabled) {
+  background-color: #003657;
+  color: white;
+}
+
+/* Disabled state styling for Previous/Next */
+.page-buttons button:disabled {
+  color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  background-color: white; /* no hover effect */
+  transform: none !important;
+}
+.page-buttons .active-page {
+  background-color: #003657;
+  color: white;
+}
+

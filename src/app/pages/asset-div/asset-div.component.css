@@ -1,0 +1,15 @@
+.table-and-pagination-wrapper {
+  padding: 20px;
+  width: 80%;        
+  max-width: 100%;    
+  display: flex;
+  flex-direction:column;
+  align-items: stretch;
+  justify-content: center;
+  margin: 0 auto; 
+}
+
+th:nth-child(1), td:nth-child(1) { width: 10%; } 
+th:nth-child(2), td:nth-child(2) { width: 30%; }  
+th:nth-child(3), td:nth-child(3) { width: 30%; } 
+th:nth-child(4), td:nth-child(4) { width: 30%; } 
