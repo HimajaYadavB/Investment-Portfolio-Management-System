@@ -1,0 +1,19 @@
+<div class="cont">
+
+
+<div class="details-container">
+  <div class="details-header">{{title}}</div>
+<div class="back-link" (click)="goBack()">
+  <mat-icon class="back-icon">chevron_left</mat-icon>
+  {{ backText }}
+</div>
+
+  <form class="details-form">
+    <div class="detail-group" *ngFor="let key of displayKeys">
+      <label>{{ formatLabel(key) }}</label>
+      <input [value]="portfolioData[key]" disabled />
+    </div>
+  </form>
+
+</div>
+</div>

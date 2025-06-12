@@ -9,7 +9,7 @@ export async function getPortfolios(user: any,req: Request, res: Response, pool:
 
         const result = await pool.request()
             .input('userID', sql.Int, userID)
-            .query('SELECT * FROM portfolios WHERE UserID = @UserID');
+            .query('SELECT * FROM portfolios WHERE UserID = @UserID AND IsApproved=1');
 
         if (result.recordset.length === 0) {
             return res.status(401).json({ message: 'User has no portfolios' }); 
@@ -24,10 +24,7 @@ export async function getPortfolios(user: any,req: Request, res: Response, pool:
                 .query('SELECT COUNT(*) as asseCount FROM assets where PortfolioID = @portfolioID');
             p.AssetCount = countres.recordset[0].asseCount;
 
-            console.log("countres",countres);
-            console.log("countres.recordset[0]",countres.recordset[0])
-            console.log("countres.recordset",countres.recordset) 
-            console.log("countres.recordsets",countres.recordsets)           
+       
         }
 
         

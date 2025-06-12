@@ -1,0 +1,27 @@
+
+
+<div class="edit-profile-container">
+  <h2>Edit Profile</h2>
+
+  <form #profileForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="user.firstName" name="firstName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="user.lastName" name="lastName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput [(ngModel)]="user.phone" name="phone" required />
+    </mat-form-field>
+
+    <div class="buttonss2">
+      <button (click)="onCancel()">Cancel</button>
+      <button (click)="onSave()">Save</button>
+    </div>
+  </form>
+</div>

@@ -85,7 +85,7 @@ export class BuyAssetComponent implements OnInit {
         next: (response) => {
           console.log('Buying asset...', response);
           alert('Stock purchased successfully!');
-          this.router.navigate(['/user-asset']);
+          this.router.navigate(['/user-accounts/assets']);
           
         },
         error: (error) => {
@@ -97,7 +97,7 @@ export class BuyAssetComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['/user-asset']);
+    this.router.navigate(['/user-accounts/assets']);
   }
 
 

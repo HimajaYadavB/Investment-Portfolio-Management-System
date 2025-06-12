@@ -25,6 +25,17 @@ import { loginAdmin } from './server/adminLogin';
 import { approveBroker } from './server/approveBroker';
 import { getPendingBrokers } from './server/pendingBrokers';
 import { rejectBroker } from './server/rejectBroker';
+import { approvePortfolio } from './server/approvePortfolio';
+import { approveAsset } from './server/approveAsset';
+import { getPendingPortfolios } from './server/pendingPortfolios';
+import { getPendingAssets } from './server/pendingAssets';
+import { rejectPortfolio } from './server/rejectPortfolio';
+import { rejectAsset } from './server/rejectAsset';
+import { importPortfolios } from './server/importPortfolios';
+import { importAssets } from './server/importAssets';
+import { delFavLink, getUnselectedFav, getUserFav, selectFavLink, updateOrderIndex } from './server/userFav';
+import { getColumnOrder, setColumnOrder } from './server/colChange';
+import { updateProfile } from './server/updateProfile';
 dotenv.config(); // Load environment variables
 
 const dbConfig: sql.config = {
@@ -79,9 +90,29 @@ app.get('/pending-brokers', async (req, res) => {
   getPendingBrokers(res, pool);
 });
 
-app.post('/approve-broker', async (req, res) => {
+app.post('/pending-portfolios', async (req, res) => {
+  const pool = await poolPromise;
+  getPendingPortfolios(req, res, pool);
+});
+
+app.post('/pending-assets', async (req, res) => {
+  const pool = await poolPromise;
+  getPendingAssets(req, res, pool);
+});
+
+app.post('/approve-brokers', async (req, res) => {
   const pool = await poolPromise;
   approveBroker(req, res, pool);
+});
+
+app.post('/approve-portfolios', async (req, res) => {
+  const pool = await poolPromise;
+  approvePortfolio(req, res, pool);
+});
+
+app.post('/approve-assets', async (req, res) => {
+  const pool = await poolPromise;
+  approveAsset(req, res, pool);
 });
 
 app.post('/reject-broker', async (req, res) => {
@@ -89,6 +120,15 @@ app.post('/reject-broker', async (req, res) => {
   rejectBroker(req, res, pool);
 });
 
+app.post('/reject-portfolio', async (req, res) => {
+  const pool = await poolPromise;
+  rejectPortfolio(req, res, pool);
+});
+
+app.post('/reject-asset', async (req, res) => {
+  const pool = await poolPromise;
+  rejectAsset(req, res, pool);
+});
 
 app.post('/broker-login', async (req, res) => {
   const pool = await poolPromise;
@@ -105,10 +145,58 @@ app.post('/get-user-details', async (req, res) => {
   getUserDetails(req, res, pool);
 });
 
+app.post('/import-portfolios', async(req,res)=>{
+  const pool = await poolPromise;
+  importPortfolios(req,res,pool);
+});
+
+app.post('/user-fav', async (req, res) => {
+  const pool = await poolPromise;
+  getUserFav(req, res, pool);
+});
+
+app.post('/user-fav-config', async (req, res) => {
+  const pool = await poolPromise;
+  getUnselectedFav(req,res, pool);
+});
+
+app.post('/select-fav-link', async (req, res) => {
+  const pool = await poolPromise;
+  selectFavLink(req, res, pool);
+});
+app.post('/delete-fav-link', async (req, res) => {
+  const pool = await poolPromise;
+  delFavLink(req, res, pool);
+});
+
+app.post('/update-order-index', async (req, res) => {
+  const pool = await poolPromise;
+  updateOrderIndex(req, res, pool);
+});
+
+app.post('/import-assets', async(req,res)=>{
+  const pool = await poolPromise;
+  importAssets(req,res,pool);
+})
 
 app.post('/get-asset-type', async (req, res) => {
   const pool = await poolPromise;
   getAssetType(res, pool);
+});
+
+app.post('/get-column-order', async (req, res) => {
+  const pool = await poolPromise;
+  getColumnOrder(req, res, pool);
+});
+
+app.post('/insert-column-order', async (req, res) => {
+  const pool = await poolPromise;
+  setColumnOrder(req, res, pool);
+});
+
+app.post('/update-profile', async (req, res) => {
+  const pool = await poolPromise;
+  updateProfile(req, res, pool);
 });
 
 app.post('/get-portfolio-type', async (req, res) => {

@@ -1,0 +1,25 @@
+<div>
+<h1 mat-dialog-title class="section-header" style="margin-top: 0;">Reorder Columns</h1>
+<div style="padding: 10px 20px;">Drag and drop to reorder columns</div>
+
+
+<div cdkDropList (cdkDropListDropped)="drop($event)" class="column-list">
+  <div *ngFor="let column of currentOrder; let i = index" cdkDrag class="column-item">
+    
+    <div class="arrows">
+      <button (click)="moveUp(i)" [disabled]="i === 0">▲</button>
+      <button (click)="moveDown(i)" [disabled]="i === currentOrder.length - 1">▼</button>
+    </div>
+
+    <span>{{ column }}</span>
+    
+  </div>
+</div>
+
+
+<div mat-dialog-actions class="buttonss1">
+    <button class="b1" (click)="restoreDefault()">Restore Default</button>
+    <button class="b1" (click)="cancel()">Cancel</button>
+    <button class="b1" (click)="save()">Save</button>
+</div>
+</div>

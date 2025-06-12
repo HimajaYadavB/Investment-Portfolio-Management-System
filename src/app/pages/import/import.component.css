@@ -1,0 +1,10 @@
+.import-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.back-link{
+    padding: 20px 0px;
+}

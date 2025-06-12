@@ -6,8 +6,8 @@
   background-color: #ccc;
   font-family: Arial, sans-serif;
   font-size: 14px;
-  /* border-top: 1px solid black; */
   flex-wrap: nowrap;
+  height: 30px;
 }
 
 .paginator-left {
@@ -32,7 +32,7 @@
 
 .show-inline-group .show-label,
 .show-inline-group .items-label {
-  margin: 0 4px;
+  margin: 0 3px;
 }
 
 .dropdown {
@@ -40,6 +40,8 @@
   font-size: 13px;
   height: 26px;
   margin-top: 13px;
+  border-radius: 0px;
+  align-items: center;
 }
 
 select {

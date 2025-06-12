@@ -1,0 +1,115 @@
+<!-- <div class="page-container1">
+  <div class="section-header">
+    <span class="section-title">User Favorites - Widget Configuration</span>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Select Favorite</mat-label>
+    <mat-select [(value)]="selectedLink" multiple>
+      <mat-option *ngFor="let link of favoriteLinks" [value]="link">
+        {{ link.Label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="selectedLink">
+    <p class="section-label">Direct Link:</p>
+    <div *ngFor="let link of selectedLink">
+    <a [routerLink]="link.Route" class="link-button">{{ link.Label }}</a>
+  </div>
+    <br><br>
+    <button mat-raised-button color="primary" (click)="onSelectFavorite()">Add to Favorites</button>
+  </div>
+</div> -->
+<!-- <div class="page-container2">
+    <div class="section-header">
+    <span class="section-title">User Favorites - Widget Configuration</span>
+  </div>
+<div class="config-container">
+  <div class="column">
+    <div class="column-header">Available Links</div>
+    <div class="dropdown-list">
+        <ul>
+          <li *ngFor="let link of unselectedLinks" (click)="addToFavorites(link)">
+            {{ link.Label }}
+          </li>
+        </ul>
+      </div>
+
+  </div>
+
+
+
+  <div class="column">
+    <div class="column-header">Assigned</div>
+    <div class="link-list-box">
+      <ul>
+        <li *ngFor="let link of favoriteLinks">{{ link.Label }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div> -->
+<!-- <div class="popup-overlay" *ngIf="showConfig">
+  <div class="popup-container"> -->
+    
+<div>
+    <div class="section-header">
+    <span class="section-title">User Favorites - Widget Configuration</span>
+  </div>
+  <div style="padding: 20px 0px 0 20px;">You may choose a max of 10 links to put on the dashboard widget</div>
+<div class="config-container">
+  <!-- Available Links -->
+  <div class="column">
+    <div class="column-header">Available Links</div>
+    <div class="search-box">
+      <input type="text" placeholder="Search" [(ngModel)]="searchTerm" />
+    </div>
+    <div class="link-list-box">
+      <ul>
+        <li *ngFor="let link of filteredUnselectedLinks" 
+            [class.selected]="isSelected(link)"
+            (click)="toggleSelection(link)">
+          {{ link.Label }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="buttonss">
+    <button class="b1" (click)="addSelectedLinks()" [disabled]="!selectedUnassignedLinks || selectedUnassignedLinks.length==0">
+      Add <mat-icon class="icon">keyboard_arrow_right</mat-icon>
+    </button>
+    <button class="b1" (click)="removeSelectedLinks()" [disabled]="!assignedSelectedLinks || assignedSelectedLinks.length==0">
+      <mat-icon class="icon">keyboard_arrow_left</mat-icon> Remove
+    </button>
+  </div>
+  <!-- Assigned Links -->
+  <div class="column">
+    <div class="column-header">Assigned</div>
+    <div class="link-list-box">
+      <ul>
+        <li *ngFor="let link of favoriteLinks" 
+            [class.selected]="isAssignedSelected(link)"
+            (click)="toggleAssignedSelection(link)">
+          {{ link.Label }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="buttonss">
+    <button class="b1" (click)="moveUp()" [disabled]="assignedSelectedLinks.length==0">
+      Up <mat-icon class="icon" >keyboard_arrow_up</mat-icon>
+    </button>
+    <button class="b1" (click)="moveDown()" [disabled]="assignedSelectedLinks.length==0">
+      Down <mat-icon class="icon">keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+
+</div>
+<div class="footer-actions">
+  <button class="cancel" (click)="onCancel()">Cancel</button>
+  <button  (click)="onSaveAndClose()">Save</button>
+</div>
+</div>
+  <!-- </div>
+</div> -->

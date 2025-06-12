@@ -1,48 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <div class="portfolio-container">
-
-    <h3 class="portfolio-heading">Pending Approvals</h3>
-
-    <!-- Check if portfolios exist -->
-    <div *ngIf="brokers.length > 0; else nopending">
-      <table class="portfolio-table">
-        <thead>
-          <tr>
-            <th>Broker Name</th>
-            <th>Email</th>
-            <th>License Number</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let broker of brokers">
-            <td>{{ broker.BrokerName }}</td>
-          <td>{{ broker.Email }}</td>
-          <td>{{ broker.LicenseNumber }}</td>
-          <td>
-            <button (click)="approve(broker.BrokerID)">Approve</button>
-            <button (click)="reject(broker.BrokerID)">Reject</button>
-          </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Message to show if no portfolios exist -->
-    <ng-template #nopending>
-      <p>No pending approvals</p>
-    </ng-template>
+<div class="page-container">
+  <!-- Section Title Bar -->
+  <div class="section-header">
+    <span class="section-title">Pending Approvals - {{ brokers.length }} items</span>
   </div>
 
-</body>
-</html>
+  <!-- Grid Box Container -->
+  <div class="table-container-box">
+    <div class="grid-wrapper">
+      <div class="filter-box">
+  <div class="filter-left">
+    <span class="filter-label">Filter:</span>
+    <mat-form-field appearance="outline" class="filter-input">
+      <input matInput #input placeholder="contains" (keyup)="applyFilter(input.value)">
+    </mat-form-field>
+  </div>
 
+  <!-- Right-aligned export -->
+  <div class="export-button-wrapper">
+    <!-- <app-export-button 
+      [data]="selection.selected" 
+      [columns]="displayedColumns"
+      fileName="My_portfolios">
+    </app-export-button> -->
+  </div>
+</div>
+
+
+      <div class="table-and-pagination-wrapper">
+        <div class="table-scroll-wrapper">
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1 mat-mdc-table">
+          <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="masterToggle()" disableRipple
+                          [checked]="isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" disableRipple
+                          (change)="selection.toggle(row)"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+            <!-- <mat-icon style="font-size: 18px; margin-left: 8px; color: #003657;">edit</mat-icon> -->
+          </td>
+        </ng-container>
+            <!-- Broker Name -->
+            <ng-container matColumnDef="BrokerName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Broker Name</th>
+              <td mat-cell *matCellDef="let broker">{{ broker.BrokerName }}</td>
+            </ng-container>
+
+            <!-- Email -->
+            <ng-container matColumnDef="Email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+              <td mat-cell *matCellDef="let broker">{{ broker.Email }}</td>
+            </ng-container>
+
+            <!-- License Number -->
+            <ng-container matColumnDef="LicenseNumber">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>License Number</th>
+              <td mat-cell *matCellDef="let broker">{{ broker.LicenseNumber }}</td>
+            </ng-container>
+
+            <!-- Actions -->
+            <ng-container matColumnDef="Actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let broker">
+                <button (click)="approve(broker.BrokerID)" class="approve-btn">Approve</button>
+                <button (click)="reject(broker.BrokerID)" class="reject-btn">Reject</button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+        <app-custom-paginator
+          [totalItems]="totalItems"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 20]"
+          [pageIndex]="pageIndex"
+          (pageChange)="handlePageChange($event)">
+        </app-custom-paginator>
+      </div>
+    </div>
+  </div>
+</div>

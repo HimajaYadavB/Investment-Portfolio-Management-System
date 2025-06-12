@@ -9,11 +9,12 @@ import { TableSortService } from '../../services/table-sort.service';
 
 import { MaterialDesignModule } from '../../material-design/material-design.module';
 import { CustomPaginatorComponent } from '../custom-paginator/custom-paginator.component';
+import { ExportButtonComponent } from '../export-button/export-button.component';
 
 @Component({
   selector: 'app-asset-div',
   standalone: true,
-  imports: [CommonModule, MaterialDesignModule, CustomPaginatorComponent],
+  imports: [CommonModule, MaterialDesignModule, CustomPaginatorComponent, ExportButtonComponent],
   templateUrl: './asset-div.component.html',
   styleUrls:['./asset-div.component.css']
 })

@@ -34,7 +34,7 @@ export async function getAssets(user: any, req: Request, res: Response, pool: sq
             SELECT A.*, P.*
             FROM Assets A
             JOIN portfolios P ON A.PortfolioID = P.PortfolioID
-            WHERE A.PortfolioID IN (${portfolioIDs.map(id => `'${id}'`).join(',')})
+            WHERE A.PortfolioID IN (${portfolioIDs.map(id => `'${id}'`).join(',')}) AND A.IsApproved=1
         `;
         console.log("Generated Query:", query); // Debugging: Log the query
 

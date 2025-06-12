@@ -52,7 +52,7 @@ export class AddPortfolioComponent {
     this.dash.addPortfolioService(portfolioData).subscribe({
       next:(response)=>{
         alert('Portfolio Added Successfully')
-        this.router.navigate(['/user-portfolio'])
+        this.router.navigate(['/user-accounts/portfolios'])
       },
       error:(error)=>{
         console.log("Error adding portfolio", error);
@@ -61,7 +61,7 @@ export class AddPortfolioComponent {
   }
 
   goBack(){
-    this.router.navigate(['/user-portfolio']);
+    this.router.navigate(['/user-accounts/portfolios']);
   }
 
   importCSV(event: Event): void {

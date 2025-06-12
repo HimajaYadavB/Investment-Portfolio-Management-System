@@ -12,13 +12,17 @@ import { MaterialDesignModule } from '../../material-design/material-design.modu
 export class ExportButtonComponent {
  @Input() data: any[] = [];
   @Input() columns: string[] = [];
-  @Input() fileName: string = ''; // SelectionModel<any> | null = null;
+  @Input() fileName: string = '';
 
   exportSelected() {
+    if (!this.data || this.data.length === 0) {
+    alert('Please select at least one row to export.');
+    return;
+  }
     const exportData = this.data.map(row => {
       const filtered: any = {};
       this.columns
-      .filter(col => col !== 'select') // remove 'select'
+      .filter(col => col !== 'select' && col !== 'Sell') // remove 'select'
       .forEach(col => filtered[col] = row[col]);
       return filtered;
     });

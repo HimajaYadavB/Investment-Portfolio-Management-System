@@ -73,16 +73,25 @@
     
     <a (click)="switchTab('user-dashboard')" [ngClass]="{ 'active-tab': activeTab === 'user-dashboard' }">Dashboard</a>
     
-    <a [matMenuTriggerFor]="accountsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-portfolios') }">Accounts</a>
+    <!-- <a [matMenuTriggerFor]="accountsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-accounts') }">Accounts</a>
     <mat-menu #accountsMenu="matMenu">
-      <button mat-menu-item (click)="switchTab('user-portfolios/add')">Add</button>
-      <button mat-menu-item (click)="switchTab('user-portfolios/approve')">Approve</button>
+      <button mat-menu-item [matMenuTriggerFor]="addsubMenu">Add</button>
+      <button mat-menu-item [matMenuTriggerFor]="approvesubMenu">Approve</button>
     </mat-menu>
-    
-    <a [matMenuTriggerFor]="tradesMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-trade') }">Trades</a>
-    <mat-menu #tradesMenu="matMenu">
-      <button mat-menu-item (click)="switchTab('user-trade/portfolios')">Portfolios</button>
-      <button mat-menu-item (click)="switchTab('user-trade/assets')">Assets</button>
+    <mat-menu #addsubMenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-accounts/add/portfolio')">Portfolio</button>
+      <button mat-menu-item  (click)="switchTab('user-accounts/add/asset')">Asset</button>
+    </mat-menu>
+    <mat-menu #approvesubMenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-accounts/approve/portfolio')">Portfolio</button>
+      <button mat-menu-item  (click)="switchTab('user-accounts/approve/asset')">Asset</button>
+    </mat-menu> -->
+
+
+    <a [matMenuTriggerFor]="accountsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-accounts') }">Accounts</a>
+    <mat-menu #accountsMenu="matMenu">
+      <button mat-menu-item (click)="switchTab('user-accounts/portfolios')">Portfolios</button>
+      <button mat-menu-item (click)="switchTab('user-accounts/assets')">Assets</button>
     </mat-menu>
     
     <a [matMenuTriggerFor]="paymentsMenu" [ngClass]="{ 'active-tab': activeTab.startsWith('user-payments') }">Payments</a>
@@ -98,7 +107,11 @@
     
   </span>
 
-  <span class="spacer"></span>
-  <app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu>
+  <div class="profile">
+  <div style="font-size: 16px; font-weight: 500;">Welcome, {{userID}}</div>
+  <mat-icon (click)="openD1()">person</mat-icon>
+  
+  <!-- <app-profile-menu [userName]="userName" [userEmail]="userEmail"></app-profile-menu> -->
+  </div>
 </mat-toolbar>
 

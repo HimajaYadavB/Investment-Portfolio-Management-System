@@ -12,7 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -29,7 +32,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatToolbarModule,
     MatButtonModule,
-
+    MatSelectModule,
+    MatOptionModule,
+    MatListModule,
+    MatDialogModule
   ],
   exports: [
     // Re-export so other modules can use them
@@ -43,7 +49,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatToolbarModule,
     MatButtonModule,
-
+    MatSelectModule,
+    MatOptionModule,
+    MatListModule,
+    MatDialogModule
   ]
 })
 export class MaterialDesignModule { }

@@ -1,0 +1,32 @@
+mat-list-item {
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 0;
+}
+
+mat-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  color: #333;
+  vertical-align: middle;
+}
+
+.menu-text {
+  font-size: 14px;
+  color: #000;
+  vertical-align: middle;
+}
+mat-list-item:hover {
+  background-color: #d5f0ff; /* Light cyan background */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 0;
+}
+
+/* mat-list-item:hover .mat-icon {
+  color: #00796b;
+}
+
+mat-list-item:hover .menu-text {
+  color: #00796b;
+} */

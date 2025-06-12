@@ -24,6 +24,14 @@ export class UserdashboardService {
 
   }
 
+  private user: any;
+  setCurrentUser(u: any){
+    this.user=u;
+  }
+  getCurrentUser(){
+    return this.user;
+  }
+
   getportfolioservice(): Observable<any>{
     return this.http.post(`${this.apiUrl}/user-portfolio`, {email: this.email});
   }
@@ -31,7 +39,6 @@ export class UserdashboardService {
   getassetservice(): Observable<any>{
     return this.http.post(`${this.apiUrl}/user-asset`,{email:this.email});
   }
-
 
   getDividendService():Observable<any>{
     return this.http.post(`${this.apiUrl}/user-dividend`,{email:this.email});

@@ -47,9 +47,9 @@ export async function buyAssets(user: any, req: Request, res: Response, pool: sq
         }
         else{
             const insertAssetQuery = `
-                INSERT INTO Assets (PortfolioID, AssetName, AssetType, Quantity,  CurrentPrice, DatePurchased)
+                INSERT INTO Assets (PortfolioID, AssetName, AssetType, Quantity,  CurrentPrice, DatePurchased,IsApproved)
                 OUTPUT INSERTED.AssetID
-                VALUES (@portfolioID, @assetName, @assetType, @quantity, @purchasePrice, GETDATE())
+                VALUES (@portfolioID, @assetName, @assetType, @quantity, @purchasePrice, GETDATE(),0)
             `;
 
             const insertResult = await pool.request()

@@ -1,29 +1,4 @@
-/* .tabs {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-
-.tabs li {
-  padding: 10px 20px;
-  cursor: pointer;
-  position: relative;
-}
-
-.tabs li.profile-tab {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0;
-  background: none;
-  border: none;
-
-  margin-right: 20px;
-} */
 
 .full-width-toolbar {
   width: 100%;
@@ -48,13 +23,21 @@
 
 .nav-text a:hover,.nav-text a.active-tab {
   background-color: #00588a;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 
 
-
+/* 
 .spacer {
   flex: 1 1 auto;
+} */
+
+.profile{
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
 }
 
 

@@ -8,10 +8,11 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { CustomPaginatorComponent } from '../custom-paginator/custom-paginator.component';
+import { ExportButtonComponent } from '../export-button/export-button.component';
 @Component({
   selector: 'app-port-div',
   standalone: true,
-  imports: [CommonModule, MaterialDesignModule, CustomPaginatorComponent],
+  imports: [CommonModule, MaterialDesignModule, CustomPaginatorComponent, ExportButtonComponent],
   templateUrl: './port-div.component.html',
   styleUrls:['./port-div.component.css']
 })

@@ -5,7 +5,7 @@
     padding: 12px 20px;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 6px;
+    border-radius: 0px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -33,7 +33,7 @@
     padding: 12px 20px;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 6px;
+    border-radius: 0px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -61,28 +61,43 @@
 /* Dropdown (select) styling */
 select {
   width: 100%;
-  padding: 10px;
+  padding: 10px 30px 10px 10px; /* pushes text away from the arrow */
   margin-top: 8px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0px;
   box-sizing: border-box;
   font-size: 14px;
   background-color: #fff;
-  appearance: none; /* Removes default browser arrow styling */
+
+  
+
+  /* Remove native arrow */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'6'%20viewBox%3D'0%200%2010%206'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%206%205-6H0z'%20fill%3D'%234CAF50'%20/%3E%3C/svg%3E");
+
+  /* Add custom arrow icon */
+  /* background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='white'/%3E%3C/svg%3E"); */
+  /* background-image: url('https://www.iconpacks.net/icons/2/free-down-arrow-icon-4846-thumb.png'); */
+  background-image: url('https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ExpandMore-512.png');
+
   background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 10px 6px;
+  background-position: right 5px center;
+  background-size: 20px;
+}
+.action-select option {
+  background-color: white;    /* White option background */
+  color: #003657;             /* Blue text color */
+  font-weight: 500;
+  border-radius: 0 !important; /* No rounded corners */
 }
 
 /* Optional: Focus effect */
 select:focus {
   border-color: #003657;
   outline: none;
-  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+  /* box-shadow: 0 0 4px ; */
 }
 
 
@@ -111,7 +126,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-weight: bold;
   display: flex;
   align-items: center;
-  width: 96%;
   border-bottom: 1px solid #ccc;
 }
 
@@ -126,7 +140,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .grid-wrapper {
   border: 1px solid #ccc;
   border-radius: 0px;
-  padding: 20px;
+  padding: 5px 20px;
   overflow-x: hidden;
   max-width: 1000px;
 }
@@ -153,15 +167,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 }
 
-.mat-mdc-row:nth-child(even) {
-  background-color: #f9f9f9;
-}
+
 
 .mat-mdc-header-row,
 .mat-mdc-row {
   height: 36px !important; /* default is ~56px */
+  
 }
-
+.mat-mdc-cell{
+  background-color: white !important;
+}
 .mat-mdc-table {
   table-layout: auto;
   width:max-content;
@@ -170,15 +185,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 /* 🔸 Only this inner wrapper should scroll */
 .table-scroll-wrapper {
-  overflow-x: auto;
+  overflow-x: auto;       /* ✅ allow horizontal scroll */
+  overflow-y: hidden;     /* ✅ remove vertical scroll */
   width: 100%;
+  height: auto;           /* ✅ let height adjust naturally */
+  max-height: none;
+  padding-bottom: 0;      /* optional: spacing control */
 }
 
-/* 🔸 This allows table to grow beyond wrapper if needed */
+/* Let table grow beyond the wrapper if needed horizontally */
 .table-scroll-wrapper .mat-mdc-table {
-  min-width: 1000px; /* or any desired minimum */
-  width: max-content;
+  min-width: 100%;
+  width: auto;
 }
+
 
 /* ✅ Filter Input */
 .filter-box {
@@ -186,9 +206,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   justify-content: space-between !important;
   align-items: center;
   gap: 10px;
-  padding: 10px 0;
   border-radius: 0px;
-  margin-bottom: 20px;
   width: 100%;
 
 }
@@ -299,7 +317,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 32px;
   height: 32px;
   border: 1px solid #003657;
-  border-radius: 4px;
+  border-radius: 0px;
   color: #003657;
   margin: 0 2px;
 }
@@ -319,7 +337,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-mdc-button-base {
   color: #003657;
   border: 1px solid #003657;
-  border-radius: 4px;
+  border-radius: 0px;
   font-size: 14px;
   min-width: 32px;
   height: 32px;
@@ -441,4 +459,302 @@ td.mat-mdc-cell:first-child {
 .mat-mdc-menu-content {
   padding: 0 !important;
   overflow: hidden !important;
+}
+
+
+select.action-select {
+  padding: 10px 40px 10px 12px; /* Leave space for custom arrow */
+  font-size: 14px;
+  color: white;
+  background-color: #003657;
+  border: none;
+  cursor: pointer;
+
+  /* Remove native arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Add custom arrow icon */
+  /* background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='white'/%3E%3C/svg%3E"); */
+  /* background-image: url('https://www.iconpacks.net/icons/2/free-down-arrow-icon-4846-thumb.png'); */
+  background-image: url('/images/down-arrowt.png');
+
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 30px;
+}
+
+
+/* Style the select dropdown */
+.action-select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  background-color: #003657;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  width: fit-content;
+  /* transition: border-color 0.3s, box-shadow 0.3s; */
+}
+.action-dropdown-wrapper-outer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 25px;
+}
+
+/* Hover and focus effect */
+.action-select:hover,
+.action-select:focus {
+  /* border-color: #3f51b5; Angular Material primary color */
+  box-shadow: 0 0 4px rgba(63, 81, 181, 0.4);
+  outline: none;
+}
+
+/* Optional: Customize selected option appearance */
+.action-select option {
+  padding: 10px;
+}
+.custom-mat-select {
+  width: 150px;
+  background-color: white;
+  margin-bottom: 30px;
+}
+
+.custom-mat-select .mat-mdc-form-field-flex {
+  border-radius: 0 !important; /* 🔴 Remove rounded corners */
+  background-color: white !important;
+}
+
+.custom-mat-select .mat-mdc-select-value {
+  color: #003657; /* Dark blue text */
+  font-weight: bold;
+}
+
+.custom-mat-select .mat-mdc-select-arrow {
+  color: #003657;
+}
+
+.mat-mdc-option {
+  background-color: white !important;
+  color: #003657 !important;
+  font-weight: 500;
+}
+
+.mat-mdc-option:hover {
+  background-color: #f0f0f0 !important;
+}
+
+
+.action-icons {
+  display: flex;
+  align-items:flex-start;
+  width: fit-content; /* gap between icons */
+  gap: 5px;
+}
+
+.action-icons mat-icon {
+  font-size: 18px;    /* smaller icon size */
+  cursor: pointer;
+  color: #003657;
+}
+
+.mat-column-actions {
+  width: 65px !important;  /* restrict column width */
+  max-width: 65px !important;
+  /* padding: 0 !important; */
+}
+
+
+.details-container {
+  padding: 30px;
+  background-color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.details-header {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #003b5c;
+}
+
+.details-form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 60px;
+  row-gap: 25px;
+  padding: 17px 50px;
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+}
+
+.detail-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.detail-group input,
+.detail-group select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 0px;
+  border: 1px solid #cfd8dc;
+  background-color: #f3f6f9;
+  color: #555;
+}
+
+.detail-group input:disabled,
+.detail-group select:disabled {
+  color: #444;
+  background-color: #eeeeee;
+  border-color: #c1c1c1;
+  cursor: not-allowed;
+}
+
+.meta-info {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+}
+.back-link {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #4bade3;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #005c8a;
+  text-decoration: underline;
+}
+
+.back-icon {
+  font-size: 25px;
+  /* margin-right: 6px; */
+}
+
+.cont{
+    padding: 5px;
+}
+
+
+.page-container1 {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0;
+  background-color: white;
+  border: 1px solid #d4d4d4;
+  
+}
+
+.page-container2 {
+  max-width: 1100px;
+  margin: 20px 20px;
+  padding: 0px;
+  background-color: white;
+  border: 1px solid #d4d4d4;
+  
+  
+}
+
+.page-container5 {
+  /* max-width: 1100px; */
+  /* margin: 30px auto; */
+  width: 1000px;
+  padding: 0;
+  background-color: white;
+  border: 1px solid #d4d4d4;
+}
+
+.buttonss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttonss1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  gap: 10px;
+}
+
+.buttonss2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.b1 {
+  width: 120px;
+  display: flex;              /* enable horizontal layout */
+  align-items: center;        /* vertically center text & icon */
+  justify-content: center;    /* horizontally center contents */
+  gap: 3px;                   /* spacing between text and icon */
+  font-weight: bold;
+  background-color: #003c64;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  /* border-radius: 4px; */
+}
+
+.b1 mat-icon {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+.disabled-icon {
+  opacity: 0.4;
+}
+
+.disabled-pointer {
+  cursor: not-allowed;
+  pointer-events: none; /* Optionally block all interaction */
+}
+
+
+
+.mat-mdc-dialog-container{
+  border-radius: 0px;
+  width: 50px;
+}
+
+.flat-dialog .mat-mdc-dialog-surface {
+  border-radius: 0px !important;
+}
+
+.flat-dialog1 .mat-mdc-dialog-surface {
+ 
+  border-radius: 0px !important;
+  
+  
 }

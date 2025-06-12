@@ -8,10 +8,11 @@ import { TableSortService } from '../../services/table-sort.service';
 import { MaterialDesignModule } from '../../material-design/material-design.module';
 import { CustomPaginatorComponent } from '../custom-paginator/custom-paginator.component';
 import { SelectionModel } from '@angular/cdk/collections';
+import { ExportButtonComponent } from '../export-button/export-button.component';
 
 @Component({
   selector: 'app-get-taxes',
-  imports: [CommonModule,MaterialDesignModule, CustomPaginatorComponent],
+  imports: [CommonModule,MaterialDesignModule, CustomPaginatorComponent, ExportButtonComponent],
   standalone:true,
   templateUrl: './get-taxes.component.html',
   styleUrl: './get-taxes.component.css'

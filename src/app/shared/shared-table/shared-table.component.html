@@ -1,0 +1,124 @@
+<div class="table-container-box">
+  <div *ngIf="showOuterActions" class="action-dropdown-wrapper-outer action-dropdown-wrapper">
+    <label class="filter-label" for="bulkSelect1" style="display: none;">Actions</label>
+    <select id="bulkSelect1" (change)="onOuterActionChange($event)" class="action-select" style="margin-bottom: 20px; margin-right: 10px;">
+        <option value="" disabled selected hidden>Actions</option>
+        <option value="add">Add</option>
+        <option value="import">Import</option>
+    </select>
+    <!-- In your template -->
+    <!-- <input type="file"
+       *ngIf="showFileUpload"
+       (change)="handleFileUpload($event)"
+       accept=".xlsx, .xls"
+       style="margin-top: 10px" /> -->
+
+    </div>
+    <div class="grid-wrapper">
+
+<div class="table-scroll-wrapper">
+  <div class="filter-box">
+    <div class="filter-left">
+      <span class="filter-label">Filter:</span>
+      <mat-form-field appearance="outline" class="filter-input">
+        <input matInput #input placeholder="contains" (keyup)="applyFilter(input.value)">
+      </mat-form-field>
+    </div>
+    
+
+    <div class="export-button-wrapper">
+      <mat-icon (click)="openDialog()">settings</mat-icon>
+      <app-export-button
+        [data]="selection.selected"
+        [columns]="displayedColumns"
+        [fileName]="inputFileName">
+      </app-export-button>
+    </div>
+  </div>
+
+
+  <!-- Conditional Select Action Dropdown -->
+   <div *ngIf="showBulkActionDropdown" class="action-dropdown-wrapper">
+    <label class="filter-label" for="bulkSelect" style="display: none;">Actions</label>
+    <select id="bulkSelect" (change)="onBulkActionChange($event)" class="action-select" style="margin-bottom: 30px;">
+        <option value="" disabled selected hidden>Actions</option>
+        <option value="approve">Approve</option>
+        <option value="reject">Reject</option>
+    </select>
+    </div>
+    <!-- <div *ngIf="showBulkActionDropdown" class="action-dropdown-wrapper">
+  <label class="filter-label" for="bulkSelect" style="display: none;">Actions</label>
+  <mat-form-field appearance="fill" class="action-select" style="margin-bottom: 30px;">
+    <mat-select id="bulkSelect" (selectionChange)="onBulkActionChange($event.value)" disableRipple>
+      <mat-option value="" disabled>Actions</mat-option>
+      <mat-option value="approve">Approve</mat-option>
+      <mat-option value="reject">Reject</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div> -->
+
+
+  <!-- Table -->
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1 mat-mdc-table">
+
+    <!-- Selection Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="masterToggle()"
+          [checked]="isAllSelected()" disableRipple>
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="selection.toggle(row)"
+          [checked]="selection.isSelected(row)" disableRipple>
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="mat-column-actions">Actions</th>
+      <td mat-cell *matCellDef="let row" class="mat-column-actions">
+        <div class="action-icons"> 
+          <mat-icon (click)="row['PortfolioType'] !== 'Growth' && onEdit(row)" 
+            [class.disabled-icon]="row['PortfolioType']==='Growth'"
+            [class.disabled-pointer]="row['PortfolioType']==='Growth'"
+            [attr.aria-disabled]="row['PortfolioType'] === 'Growth' ? 'true' : null">
+            edit
+          </mat-icon>
+          <mat-icon (click)="onDetails(row)">description</mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <!-- Dynamic Columns -->
+    <ng-container *ngFor="let col of columns" [matColumnDef]="col.name">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ col.label }}
+        <mat-icon class="custom-sort-icon" (click)="sortData(col.name)">{{getSortIcon(col.name)}}</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ row[col.name] }}
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginator -->
+  <app-custom-paginator
+    [totalItems]="totalItems"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5, 10, 20]"
+    (pageChange)="onPageChange($event)">
+  </app-custom-paginator>
+</div>
+</div>
+  </div>

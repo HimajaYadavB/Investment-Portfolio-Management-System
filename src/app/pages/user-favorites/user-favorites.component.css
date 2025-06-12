@@ -1,0 +1,75 @@
+.user-favorites-container {
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.header-bar {
+  background-color: #003c64;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -20px -20px 15px -20px;
+}
+.spacing{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links{
+    padding: 10px 20px;
+}
+
+.settings-icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.section-label {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.link-list a {
+  display: block;
+  padding: 8px 10px;
+  border-bottom: 1px solid #ccc;
+  color: #0074b6;
+  text-decoration: none;
+}
+
+.link-list a:hover {
+  background-color: #f0f0f0;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* dim background */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container {
+  background-color: white;
+  width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  /* border-radius: 8px; */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  padding: 0 0;
+}

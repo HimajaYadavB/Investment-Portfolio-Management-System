@@ -11,10 +11,11 @@ import {MatSort} from '@angular/material/sort';
 import { TableSortService } from '../../services/table-sort.service';
 import { MaterialDesignModule } from '../../material-design/material-design.module';
 import { CustomPaginatorComponent } from '../custom-paginator/custom-paginator.component';
+import { ExportButtonComponent } from '../export-button/export-button.component';
 
 @Component({
   selector: 'app-asset',
-  imports: [CommonModule, BuyAssetComponent, MaterialDesignModule, CustomPaginatorComponent],
+  imports: [CommonModule, BuyAssetComponent, MaterialDesignModule, CustomPaginatorComponent, ExportButtonComponent],
   templateUrl: './asset.component.html',
   styleUrl: './asset.component.css',
   standalone: true

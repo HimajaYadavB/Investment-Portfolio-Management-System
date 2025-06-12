@@ -1,0 +1,47 @@
+<!-- <div class="page-container">
+  <div class="section-header">
+    <span class="section-title">User Favorites  -Widget Configuration</span>
+  </div>
+  
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select Favorite</mat-label>
+    <mat-select [(value)]="selectedLink">
+      <mat-option *ngFor="let link of favoriteLinks" [value]="link">
+        {{ link.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="selectedLink">
+    <p class="section-label">Direct Link:</p>
+    <a [routerLink]="selectedLink.route" class="link-button">{{ selectedLink.label }}</a>
+  </div>
+</div> -->
+<div class="page-container1">
+  <div class="section-header spacing">
+    User Favorites
+    <span class="settings-icon" (click)="openConfig()">
+      <mat-icon>settings</mat-icon>
+    </span>
+  </div>
+<div class="nav-links">
+  <div class="section-label">Navigation Link:</div>
+
+  <div class="link-list">
+    <a *ngFor="let link of favoriteLinks" [routerLink]="link.Route">
+      {{ link.Label }}
+    </a>
+  </div>
+</div>
+
+<!-- <app-user-favorites-config *ngIf="showConfig" (close)="closeConfig()" /> -->
+</div>
+
+
+<!-- <div class="popup-overlay" *ngIf="showConfig">
+  <div class="popup-container">
+    your existing .page-container content
+     <app-user-favorites-config (close)="onPopupClose($event)" />
+  </div>
+</div> -->

@@ -26,13 +26,14 @@ export async function loginUser(req: Request, res: Response, pool: sql.Connectio
         const user = result.recordset[0];
         const isPasswordValid = password === user.Password;
 
+
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Invalid credentials2' });
         }
 
-        const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
-
-        res.status(200).json({ message: 'Login successful', token });
+        //const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+        console.log("Sending user to frontend:", user);
+        res.status(200).json({ message: 'Login successful', user });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in', error });
     }

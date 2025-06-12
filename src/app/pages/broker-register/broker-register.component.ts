@@ -45,7 +45,7 @@ export class BrokerRegisterComponent {
       next:(response)=>{
         alert('Register Request Raised Successfully!');
         console.log('Response:', response);
-        this.router.navigate(['broker-login']);
+        this.router.navigate(['login']);
       },
       error:(error)=>{
         alert('Register failed');

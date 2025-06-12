@@ -22,6 +22,10 @@ import { ApprovePortfolioComponent } from './pages/approve-portfolio/approve-por
 import { AccountComponent } from './pages/account/account.component';
 import { AssetDivComponent } from './pages/asset-div/asset-div.component';
 import { PortDivComponent } from './pages/port-div/port-div.component';
+import { AssetApprovalComponent } from './pages/asset-approval/asset-approval.component';
+import { DetailsComponent } from './pages/details/details.component';
+import { ImportComponent } from './pages/import/import.component';
+import { UserFavoritesConfigComponent } from './pages/user-favorites-config/user-favorites-config.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default Route
@@ -41,6 +45,9 @@ export const routes: Routes = [
   {path:'add-dividends', component:AdminAddDividendsComponent},
   {path:'admin-dashboard', component:AdminDashboardComponent},
   {path:'admin-login', component:AdminLoginComponent},
+  {path:'details', component:DetailsComponent},
+  {path:'import-page', component: ImportComponent},
+  {path:'user-fav-config', component: UserFavoritesConfigComponent},
 {
   path: 'user-payments',
   component: UserPaymentsComponent,
@@ -56,9 +63,18 @@ export const routes: Routes = [
     },
     { path: 'taxes', component: GetTaxesComponent }
   ]
-}
+},
 
-,
+{
+    path: 'user-accounts',
+    component: TradeComponent, // the wrapper component
+    children: [
+      { path: '', redirectTo: 'portfolios', pathMatch: 'full' }, // default sub-tab
+      { path: 'portfolios', component: ApprovePortfolioComponent },
+      { path: 'assets', component: AssetApprovalComponent },
+
+    ]
+  },
 
   {
     path: 'user-trade',
@@ -75,6 +91,14 @@ export const routes: Routes = [
       {path:'', redirectTo:'add', pathMatch:'full'},
       {path:'add', component: AddPortfolioComponent},
       {path:'approve', component:ApprovePortfolioComponent}
+    ]
+  },
+  { path: 'user-assets', 
+    component: AccountComponent,
+    children:[
+      {path:'', redirectTo:'add', pathMatch:'full'},
+      {path:'add', component: BuyAssetComponent},
+      {path:'approve', component:AssetApprovalComponent}
     ]
   }
   

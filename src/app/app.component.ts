@@ -35,7 +35,11 @@ export class AppComponent {
           url.startsWith('/add-portfolio') ||
           url.startsWith('/sell-asset') ||
           url.startsWith('/user-payments') ||
-          url.startsWith('/user-trade')  // <- covers dividends/taxes too!
+          url.startsWith('/user-trade')  ||
+          url.startsWith('/user-accounts') ||
+          url.startsWith('/details') ||
+          url.startsWith('/import-page') ||
+          url.startsWith('/user-fav-config')
         ) {  
           this.showUserTabs = true;
           this.showAdminTabs = false;

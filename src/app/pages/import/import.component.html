@@ -1,0 +1,14 @@
+<div class="cont">
+    <div class="import-container">
+<div class="import-wrapper">
+  <div class="details-header">{{title}}</div>
+  
+  <input type="file" accept=".xlsx, .xls" (change)="handleFileUpload($event)" />
+
+  <div class="back-link" (click)="goBack()">
+  <mat-icon class="back-icon">chevron_left</mat-icon>
+  {{ backText }}
+</div>
+</div>
+</div>
+</div>

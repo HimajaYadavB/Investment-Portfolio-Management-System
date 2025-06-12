@@ -59,9 +59,13 @@ export class LoginComponent {
         break;
 
       case 'user':
-        this.dash.setEmailService(this.email);
+        //this.dash.setEmailService(this.email);
         this.userService.loginservice(credentials).subscribe({
-          next: () => {
+          next: (response) => {
+            console.log("Full response from backend:", response);
+            this.dash.setEmailService(this.email); 
+            this.dash.setCurrentUser(response.user);
+            console.log("user", this.dash.getCurrentUser());
             this.router.navigate(['/user-dashboard']);
             this.loginFailed=false;
           },

@@ -7,15 +7,27 @@
   <!-- Grid Box Container -->
   <div class="table-container-box">
     <div class="grid-wrapper">
-            <div class="filter-box">
-      <span class="filter-label">Filter:</span>
-      <mat-form-field appearance="outline" class="filter-input">
-        <input matInput #input placeholder="contains" (keyup)="applyFilter(input.value)">
-      </mat-form-field>
-    </div>
+      <div class="filter-box">
+  <div class="filter-left">
+    <span class="filter-label">Filter:</span>
+    <mat-form-field appearance="outline" class="filter-input">
+      <input matInput #input placeholder="contains" (keyup)="applyFilter(input.value)">
+    </mat-form-field>
+  </div>
+
+  <!-- Right-aligned export -->
+  <div class="export-button-wrapper">
+    <app-export-button 
+      [data]="selection.selected" 
+      [columns]="displayedColumns"
+      fileName="My_assets">
+    </app-export-button>
+  </div>
+</div>
+
       <div class="table-header">
         <div></div>
-        <button (click)="goToBuyAsset()" class="primary-action-btn">Buy Asset</button>
+        <!-- <button (click)="goToBuyAsset()" class="primary-action-btn">Buy Asset</button> -->
       </div>
       <div class="table-and-pagination-wrapper">
         <div class="table-scroll-wrapper">
